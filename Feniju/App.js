@@ -1,61 +1,60 @@
-
-import React, { useState } from 'react';  // Agrega esta línea para importar useState
+import React, { useState } from 'react';
 import { StatusBar, TextInput, TouchableOpacity, FlatList, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
+  const [tareas, setTareas] = useState([]);
+  const [nuevaTarea, setNuevaTarea] = useState('');
 
-  const addTask = () => {
-    if (newTask.trim() !== '') {
-      setTasks([...tasks, { id: Date.now().toString(), text: newTask, completed: false }]);
-      setNewTask('');
+  const agregarTarea = () => {
+    if (nuevaTarea.trim() !== '') {
+      setTareas([...tareas, { id: Date.now().toString(), texto: nuevaTarea, completada: false }]);
+      setNuevaTarea('');
     }
   };
 
-  const deleteTask = (taskId) => {
-    const updatedTasks = tasks.filter(task => task.id !== taskId);
-    setTasks(updatedTasks);
+  const eliminarTarea = (tareaId) => {
+    const tareasActualizadas = tareas.filter(tarea => tarea.id !== tareaId);
+    setTareas(tareasActualizadas);
   };
 
-  const toggleComplete = (taskId) => {
-    const updatedTasks = tasks.map(task =>
-      task.id === taskId ? { ...task, completed: !task.completed } : task
+  const alternarCompletado = (tareaId) => {
+    const tareasActualizadas = tareas.map(tarea =>
+      tarea.id === tareaId ? { ...tarea, completada: !tarea.completada } : tarea
     );
-    setTasks(updatedTasks);
+    setTareas(tareasActualizadas);
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Lista de Tareas</Text>
+    <View style={styles.contenedor}>
+      <Text style={styles.titulo}>Lista de Tareas</Text>
       
       <FlatList
-        data={tasks}
+        data={tareas}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.taskContainer}>
-            <Text style={styles.taskText}>{item.text}</Text>
-            <TouchableOpacity onPress={() => toggleComplete(item.id)}>
-              <Text style={[styles.taskAction, { color: item.completed ? 'green' : 'blue' }]}>
-                {item.completed ? 'Desmarcar' : 'Marcar'}
+          <View style={styles.contenedorTarea}>
+            <Text style={styles.textoTarea}>{item.texto}</Text>
+            <TouchableOpacity onPress={() => alternarCompletado(item.id)}>
+              <Text style={[styles.accionTarea, { color: item.completada ? 'green' : 'blue' }]}>
+                {item.completada ? 'Desmarcar' : 'Marcar'}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => deleteTask(item.id)}>
-              <Text style={styles.taskAction}>Eliminar</Text>
+            <TouchableOpacity onPress={() => eliminarTarea(item.id)}>
+              <Text style={styles.accionTarea}>Eliminar</Text>
             </TouchableOpacity>
           </View>
         )}
       />
 
-      <View style={styles.inputContainer}>
+      <View style={styles.contenedorInput}>
         <TextInput
           style={styles.input}
           placeholder="Nueva tarea..."
-          value={newTask}
-          onChangeText={(text) => setNewTask(text)}
+          value={nuevaTarea}
+          onChangeText={(texto) => setNuevaTarea(texto)}
         />
-        <TouchableOpacity onPress={addTask}>
-          <Text style={styles.addButton}>Agregar</Text>
+        <TouchableOpacity onPress={agregarTarea}>
+          <Text style={styles.botonAgregar}>Agregar</Text>
         </TouchableOpacity>
       </View>
 
@@ -65,18 +64,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  contenedor: {
     flex: 1,
     backgroundColor: '#f0f0f0',
     alignItems: 'center',
     paddingTop: 50,
   },
-  title: {
+  titulo: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  taskContainer: {
+  contenedorTarea: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -86,14 +85,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '80%',
   },
-  taskText: {
+  textoTarea: {
     flex: 1,
   },
-  taskAction: {
+  accionTarea: {
     marginLeft: 10,
     color: 'blue',
   },
-  inputContainer: {
+  contenedorInput: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -107,11 +106,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 5,
   },
-  addButton: {
+  botonAgregar: {
     padding: 10,
     backgroundColor: 'blue',
     color: '#fff',
     borderRadius: 5,
   },
 });
-
