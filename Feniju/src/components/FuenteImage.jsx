@@ -1,3 +1,4 @@
+//FuenteImage.jsx
 const getImageSource = (category) => {
     switch(category) {
         case "CHAPERIA":
@@ -16,4 +17,4 @@ const getImageSource = (category) => {
 }
 
 
-export default getImageSource;
+export default getImageSource; 

@@ -1,0 +1,154 @@
+[
+    {
+        "id": 1,
+        "title": "Guardabarro Focus 2013",
+        "description": "Guardabarro delantero derecho de Focus 2013",
+        "price": 549000,
+        "discountPercentage": 12.96,
+        "rating": 4.69,
+        "stock": 94,
+        "brand": "Ford",
+        "category": "CHAPERIA",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_806954-MLA40442237101_012020-O.webp",
+        "images": [
+          "https://http2.mlstatic.com/D_NQ_NP_806954-MLA40442237101_012020-O.webp",
+          "https://i.dummyjson.com/data/products/1/2.jpg",
+          "https://i.dummyjson.com/data/products/1/3.jpg",
+          "https://i.dummyjson.com/data/products/1/4.jpg",
+          "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Guardabarro Ecosport 2013",
+        "description": "Guardabarro delantero derecho de Ecosport 2013",
+        "price": 749000,
+        "discountPercentage": 12.96,
+        "rating": 4.69,
+        "stock": 23,
+        "brand": "Ford",
+        "category": "CHAPERIA",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_972177-MLA31660948267_082019-O.webp",
+        "images": [
+          "https://http2.mlstatic.com/D_NQ_NP_972177-MLA31660948267_082019-O.webp",
+          "https://i.dummyjson.com/data/products/1/2.jpg",
+          "https://i.dummyjson.com/data/products/1/3.jpg",
+          "https://i.dummyjson.com/data/products/1/4.jpg",
+          "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Guardabarro Kuga 2013",
+        "description": "Guardabarro delantero derecho de Kuga 2013",
+        "price": 1749000,
+        "discountPercentage": 12.96,
+        "rating": 4.69,
+        "stock": 10,
+        "brand": "Ford",
+        "category": "CHAPERIA",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_608017-MLA44091613861_112020-O.webp",
+        "images": [
+          "https://http2.mlstatic.com/D_NQ_NP_608017-MLA44091613861_112020-O.webp",
+          "https://i.dummyjson.com/data/products/1/2.jpg",
+          "https://i.dummyjson.com/data/products/1/3.jpg",
+          "https://i.dummyjson.com/data/products/1/4.jpg",
+          "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Faros Ford Focus",
+        "description": "Faros delanteros para Ford Focus",
+        "price": 2999000,
+        "discountPercentage": 15.00,
+        "rating": 4.75,
+        "stock": 30,
+        "brand": "Ford",
+        "category": "OPTICAS",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_918565-MLA52852050402_122022-O.webp",
+        "images": [
+          "https://i.dummyjson.com/data/products/2/1.jpg",
+          "https://i.dummyjson.com/data/products/2/2.jpg",
+          "https://i.dummyjson.com/data/products/2/3.jpg",
+          "https://i.dummyjson.com/data/products/2/4.jpg",
+          "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Motor Ford Ranger 2.5",
+        "description": "Motor completo para Ford Ranger 2.5",
+        "price": 11990000,
+        "discountPercentage": 10.00,
+        "rating": 4.80,
+        "stock": 5,
+        "brand": "Ford",
+        "category": "MOTOR",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "images": [
+          "https://i.dummyjson.com/data/products/3/1.jpg",
+          "https://i.dummyjson.com/data/products/3/2.jpg",
+          "https://i.dummyjson.com/data/products/3/3.jpg",
+          "https://i.dummyjson.com/data/products/3/4.jpg",
+          "https://i.dummyjson.com/data/products/3/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Inyector Bosch",
+        "description": "Inyector diesel Bosch para vehículos varios",
+        "price": 999000,
+        "discountPercentage": 8.00,
+        "rating": 4.65,
+        "stock": 15,
+        "brand": "Bosch",
+        "category": "INYECCION",
+        "thumbnail": "data:image/jpeg;base64,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",
+        "images": [
+          "https://i.dummyjson.com/data/products/4/1.jpg",
+          "https://i.dummyjson.com/data/products/4/2.jpg",
+          "https://i.dummyjson.com/data/products/4/3.jpg",
+          "https://i.dummyjson.com/data/products/4/4.jpg",
+          "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Suspensión Deportiva",
+        "description": "Kit de suspensión deportiva ajustable para varios modelos",
+        "price": 1799000,
+        "discountPercentage": 12.00,
+        "rating": 4.85,
+        "stock": 8,
+        "brand": "KW",
+        "category": "TUNING",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_871172-MLA48634417988_122021-O.webp",
+        "images": [
+          "https://i.dummyjson.com/data/products/5/1.jpg",
+          "https://i.dummyjson.com/data/products/5/2.jpg",
+          "https://i.dummyjson.com/data/products/5/3.jpg",
+          "https://i.dummyjson.com/data/products/5/4.jpg",
+          "https://i.dummyjson.com/data/products/5/thumbnail.jpg"
+        ]
+    },
+    {
+      "id": 8,
+      "title": "Luces LED para Automóvil",
+      "description": "Paquete de luces LED multicolores para personalizar la iluminación interior y exterior del automóvil.",
+      "price": 399000,
+      "discountPercentage": 15.00,
+      "rating": 4.75,
+      "stock": 15,
+      "brand": "Philips",
+      "category": "TUNING",
+      "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_662848-CEN45667057187_042021-O.webp",
+      "images": [
+          "https://i.dummyjson.com/data/products/8/1.jpg",
+          "https://i.dummyjson.com/data/products/8/2.jpg",
+          "https://i.dummyjson.com/data/products/8/3.jpg",
+          "https://i.dummyjson.com/data/products/8/4.jpg",
+          "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+      ]
+  }
+]

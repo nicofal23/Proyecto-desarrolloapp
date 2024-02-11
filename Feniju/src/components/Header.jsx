@@ -1,16 +1,25 @@
-import { View, Text, StyleSheet, Image} from "react-native";
+//Header.jsx
+import { View, Text, StyleSheet, Image, Pressable} from "react-native";
 import {colors} from '../global/Colors'
-import {LogoImage,Carrito}  from "./Logo";
+import {Carrito}  from "./Logo";
+import {LogoImage} from "./Logo";
 
-function Header ({title = "INICIO"}) {
-    return (
-        <View style={styles.container}>
+function Header () {
+    return ( 
+        <View style={styles.menu}>
             <View>
-                <Image source={LogoImage} style={styles.ovalo}/>
+                <Image source={LogoImage} style={styles.logo}/>
             </View>
-            <Text style={styles.titulo}>{title}</Text>
-            <View>
-                <Image source={Carrito} style={styles.logo}/>
+            <View style={styles.container}>
+                <Pressable>
+                    <Text style={styles.titulo}>INICIO</Text>
+                </Pressable>
+                <Pressable>
+                    <Text style={styles.titulo}>PRODUCTOS</Text>
+                </Pressable>
+                <View>
+                    <Image source={Carrito} style={styles.carro}/>
+                </View>
             </View>
         </View>
     )
@@ -27,20 +36,23 @@ const styles =StyleSheet.create({
         width: '100%',
         height: 70,
         padding:8,
-        backgroundColor:colors.header
       },
     titulo:{
         justifyContent: 'center',
         color: colors.font,
-        fontSize:40,
+        fontSize:15,
         fontWeight: 'bold'
     },
     logo: {
-        width:50,
+        marginTop:15,
+        width:160,
         height:50,
     },
-    ovalo: {
-        width:90,
-        height:60
+    carro:{
+        width:40,
+        height:40,
+    },
+    menu: {
+        alignItems:'center'
     }
 })

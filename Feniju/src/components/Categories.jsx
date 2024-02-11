@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, ImageBackground, FlatList } from "react-native";
+//Categories.jsx
+import { View, StyleSheet, ImageBackground, FlatList } from "react-native";
 import categories from '../data/categories.json'
 import getImageSource from './FuenteImage'
+import CategoryItem from './CategoryItem';
 
 
-function Categories (){
+function Categories ({setCategorySelected}){
     return (
         <View style={styles.contenedorcategories}>
             <FlatList
@@ -13,7 +15,7 @@ function Categories (){
                 source={getImageSource(item)}
                 style={styles.textBackground}
             >
-                <Text style={styles.textocategoria}>{item}</Text>
+                <CategoryItem setCategorySelected={setCategorySelected} category={item} />
             </ImageBackground>
         )}
              keyExtractor={(category) => category}
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
         padding: 10,
         alignContent: 'center',
         marginRight: 10,
+        width:400
         
     },
     textocategoria: {
