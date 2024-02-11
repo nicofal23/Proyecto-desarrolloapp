@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { Pressable, TextInput, View , StyleSheet} from "react-native";
+import { Pressable, TextInput, View , StyleSheet, Text} from "react-native";
 import {Entypo} from "@expo/vector-icons";
 import { Octicons } from '@expo/vector-icons';
 
 
-const Search = ({onSearch}) => {
+const Search = ({onSearch, setCategorySelected}) => {
     const [input, setInput] = useState("");
 
   const search = () => {
@@ -34,6 +34,11 @@ return (
                 <Entypo name="cross" size={25} color="black"/>
             </Pressable>
         </View>
+        <View style={styles.buttoncontainer}>
+          <Pressable style={styles.backButton} onPress={()=> setCategorySelected ()} >
+            <Text style={styles.backButtonText} >Volver</Text>
+          </Pressable>
+        </View>
     </View>
 );
 }
@@ -41,26 +46,41 @@ return (
 export default Search;
 
 const styles = StyleSheet.create({
-    container: {
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "flex-start",
-      width: '100%',
-      marginLeft:10
-    },
-    inputContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      width: "100%",
-      paddingTop: 10,
-      height:80,
-    },
-    input: {
-      borderRadius: 8,
-      padding: 10,
-      borderWidth: 1,
-      width: "80%",
-      margin:10
-    },
-  });
-  
+  container: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: '100%',
+    marginLeft: 10
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    paddingTop: 10,
+    height: 80,
+  },
+  input: {
+    borderRadius: 8,
+    padding: 10,
+    borderWidth: 1,
+    width: "80%",
+    margin: 10
+  },
+  buttoncontainer: {
+    margin:20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  backButton: {
+    justifyContent: "center",
+    backgroundColor: '#007bff', 
+    padding: 10, 
+    borderRadius: 5,
+  },
+  backButtonText: {
+    color: '#ffffff', 
+    fontWeight: 'bold', 
+    textAlign: 'center', 
+  },
+});

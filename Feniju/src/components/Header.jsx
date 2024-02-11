@@ -4,17 +4,17 @@ import {colors} from '../global/Colors'
 import {Carrito}  from "./Logo";
 import {LogoImage} from "./Logo";
 
-function Header () {
+function Header ({setCategorySelected,setProductDetailId}) {
     return ( 
-        <View style={styles.menu}>
+        <View style={styles.menu}> 
             <View>
                 <Image source={LogoImage} style={styles.logo}/>
             </View>
             <View style={styles.container}>
-                <Pressable>
+                <Pressable onPress={() => setCategorySelected ()}>
                     <Text style={styles.titulo}>INICIO</Text>
                 </Pressable>
-                <Pressable>
+                <Pressable onPress={()=> setProductDetailId ()}>
                     <Text style={styles.titulo}>PRODUCTOS</Text>
                 </Pressable>
                 <View>

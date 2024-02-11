@@ -6,7 +6,7 @@ import allProducts from "../data/products.json";
 import Search from "../components/Search";
 
 
-const ItemListCategories = ({ category, setProductDetailId }) => {
+const ItemListCategories = ({ category, setProductDetailId , setCategorySelected}) => {
     const [products, setProducts] = useState([]);
     const [keyword, setKeyword] = useState("");
 
@@ -24,7 +24,7 @@ const ItemListCategories = ({ category, setProductDetailId }) => {
     return (
         <View style={styles.container}>
             <View>
-                <Search onSearch={setKeyword}/>
+                <Search onSearch={setKeyword} setCategorySelected={setCategorySelected}/>
             </View>
             <FlatList
                 data={products}

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../data/products.json";
 
-const ItemDetail = ({ productDetailId }) => {
+const ItemDetail = ({ productDetailId, setProductDetailId }) => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -16,8 +16,8 @@ const ItemDetail = ({ productDetailId }) => {
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.price}>Price: ${product.price}</Text>
-      <Pressable style={styles.backButton}>
-        <Text style={styles.backButtonText}>Volver</Text>
+      <Pressable style={styles.backButton} onPress={()=> setProductDetailId ()} >
+        <Text style={styles.backButtonText} >Volver</Text>
       </Pressable>
     </View>
   ) : (
@@ -52,6 +52,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontStyle: "italic",
     color: "#888",
+  },
+  backButton: {
+    backgroundColor: '#007bff', // Color de fondo del botón
+    padding: 10, // Espaciado interno del botón
+    borderRadius: 5, // Radio de borde para redondear el botón
+  },
+  backButtonText: {
+    color: '#ffffff', // Color del texto del botón
+    fontWeight: 'bold', // Estilo de fuente en negrita
+    textAlign: 'center', // Alineación del texto en el centro del botón
   },
 });
 

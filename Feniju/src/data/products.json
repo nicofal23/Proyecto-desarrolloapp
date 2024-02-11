@@ -103,10 +103,10 @@
         "rating": 4.65,
         "stock": 15,
         "brand": "Bosch",
-        "category": "INYECCION",
+        "category": "INYECCIÓN",
         "thumbnail": "data:image/jpeg;base64,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",
         "images": [
-          "https://i.dummyjson.com/data/products/4/1.jpg",
+          "ata:image/jpeg;base64,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",
           "https://i.dummyjson.com/data/products/4/2.jpg",
           "https://i.dummyjson.com/data/products/4/3.jpg",
           "https://i.dummyjson.com/data/products/4/4.jpg",
@@ -150,5 +150,204 @@
           "https://i.dummyjson.com/data/products/8/4.jpg",
           "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
       ]
-  }
+  },
+  {
+    "id": 9,
+    "title": "Paragolpes Deportivo Universal",
+    "description": "Paragolpes delantero deportivo para automóviles de diversas marcas y modelos",
+    "price": 349.99,
+    "discountPercentage": 8.5,
+    "rating": 4.8,
+    "stock": 75,
+    "brand": "Performance Parts",
+    "category": "CHAPERIA",
+    "thumbnail": "https://i.dummyjson.com/data/products/2/1.jpg",
+    "images": [
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/4.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+    ]
+},
+{
+  "id": 10,
+  "title": "Faros LED Matrix",
+  "description": "Faros delanteros LED con tecnología Matrix para una iluminación más eficiente y precisa",
+  "price": 799.99,
+  "discountPercentage": 15.2,
+  "rating": 4.9,
+  "stock": 63,
+  "brand": "LuminaTech",
+  "category": "OPTICAS",
+  "thumbnail": "https://i.dummyjson.com/data/products/3/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/3/1.jpg",
+      "https://i.dummyjson.com/data/products/3/2.jpg",
+      "https://i.dummyjson.com/data/products/3/3.jpg",
+      "https://i.dummyjson.com/data/products/3/4.jpg",
+      "https://i.dummyjson.com/data/products/3/thumbnail.jpg"
+  ]
+},
+{
+  "id": 11,
+  "title": "Kit de Potenciación TurboBoost",
+  "description": "Kit completo para potenciar el rendimiento del motor, incluye turbo, intercooler y componentes de alta calidad",
+  "price": 1599.99,
+  "discountPercentage": 10.0,
+  "rating": 4.7,
+  "stock": 42,
+  "brand": "SpeedTech",
+  "category": "MOTOR",
+  "thumbnail": "https://i.dummyjson.com/data/products/4/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/4/1.jpg",
+      "https://i.dummyjson.com/data/products/4/2.jpg",
+      "https://i.dummyjson.com/data/products/4/3.jpg",
+      "https://i.dummyjson.com/data/products/4/4.jpg",
+      "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+  ]
+},
+{
+  "id": 12,
+  "title": "Inyector de Alto Rendimiento",
+  "description": "Inyector de combustible de alto rendimiento para mejorar la eficiencia y potencia del motor",
+  "price": 129.99,
+  "discountPercentage": 5.3,
+  "rating": 4.5,
+  "stock": 56,
+  "brand": "FuelMaster",
+  "category": "INYECCIÓN",
+  "thumbnail": "https://i.dummyjson.com/data/products/5/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/5/1.jpg",
+      "https://i.dummyjson.com/data/products/5/2.jpg",
+      "https://i.dummyjson.com/data/products/5/3.jpg",
+      "https://i.dummyjson.com/data/products/5/4.jpg",
+      "https://i.dummyjson.com/data/products/5/thumbnail.jpg"
+  ]
+},
+{
+  "id": 13,
+  "title": "Spoiler Trasero Fibra de Carbono",
+  "description": "Spoiler trasero fabricado en fibra de carbono para mejorar la aerodinámica y estética del automóvil",
+  "price": 499.99,
+  "discountPercentage": 12.0,
+  "rating": 4.6,
+  "stock": 38,
+  "brand": "CarbonWorks",
+  "category": "TUNING",
+  "thumbnail": "https://i.dummyjson.com/data/products/6/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/6/1.jpg",
+      "https://i.dummyjson.com/data/products/6/2.jpg",
+      "https://i.dummyjson.com/data/products/6/3.jpg",
+      "https://i.dummyjson.com/data/products/6/4.jpg",
+      "https://i.dummyjson.com/data/products/6/thumbnail.jpg"
+  ]
+},
+{
+  "id": 14,
+  "title": "Espejo Retrovisor Cromado",
+  "description": "Espejo retrovisor cromado de alta calidad para añadir un toque de estilo y elegancia al vehículo",
+  "price": 79.99,
+  "discountPercentage": 6.8,
+  "rating": 4.4,
+  "stock": 82,
+  "brand": "ChromeStyle",
+  "category": "CHAPERIA",
+  "thumbnail": "https://i.dummyjson.com/data/products/7/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/7/1.jpg",
+      "https://i.dummyjson.com/data/products/7/2.jpg",
+      "https://i.dummyjson.com/data/products/7/3.jpg",
+      "https://i.dummyjson.com/data/products/7/4.jpg",
+      "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+  ]
+},
+{
+  "id": 15,
+  "title": "Luces Traseras LED Smoke",
+  "description": "Conjunto de luces traseras LED con lentes ahumadas para un aspecto más moderno y deportivo",
+  "price": 299.99,
+  "discountPercentage": 10.5,
+  "rating": 4.7,
+  "stock": 69,
+  "brand": "SmokyTech",
+  "category": "OPTICAS",
+  "thumbnail": "https://i.dummyjson.com/data/products/8/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/8/1.jpg",
+      "https://i.dummyjson.com/data/products/8/2.jpg",
+      "https://i.dummyjson.com/data/products/8/3.jpg",
+      "https://i.dummyjson.com/data/products/8/4.jpg",
+      "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+  ]
+},
+{
+  "id": 16,
+  "title": "Sistema de Escape Deportivo",
+  "description": "Sistema de escape deportivo de acero inoxidable para mejorar el rendimiento del motor y producir un sonido más deportivo",
+  "price": 699.99,
+  "discountPercentage": 7.2,
+  "rating": 4.6,
+  "stock": 53,
+  "brand": "SportExhaust",
+  "category": "MOTOR",
+  "thumbnail": "https://i.dummyjson.com/data/products/9/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/9/1.jpg",
+      "https://i.dummyjson.com/data/products/9/2.jpg",
+      "https://i.dummyjson.com/data/products/9/3.jpg",
+      "https://i.dummyjson.com/data/products/9/4.jpg",
+      "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+  ]
+},
+{
+  "id": 17,
+  "title": "Centralita de Potencia",
+  "description": "Centralita electrónica de potencia para optimizar la entrega de potencia del motor y mejorar el consumo de combustible",
+  "price": 399.99,
+  "discountPercentage": 9.0,
+  "rating": 4.5,
+  "stock": 60,
+  "brand": "PowerChip",
+  "category": "INYECCIÓN",
+  "thumbnail": "https://i.dummyjson.com/data/products/10/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/10/1.jpg",
+      "https://i.dummyjson.com/data/products/10/2.jpg",
+      "https://i.dummyjson.com/data/products/10/3.jpg",
+      "https://i.dummyjson.com/data/products/10/4.jpg",
+      "https://i.dummyjson.com/data/products/10/thumbnail.jpg"
+  ]
+},
+{
+  "id": 18,
+  "title": "Llantas Deportivas Black Edition",
+  "description": "Conjunto de llantas deportivas de aleación ligera en edición especial negro mate para un aspecto más agresivo",
+  "price": 999.99,
+  "discountPercentage": 12.3,
+  "rating": 4.8,
+  "stock": 45,
+  "brand": "BlackRims",
+  "category": "TUNING",
+  "thumbnail": "https://i.dummyjson.com/data/products/11/1.jpg",
+  "images": [
+      "https://i.dummyjson.com/data/products/11/1.jpg",
+      "https://i.dummyjson.com/data/products/11/2.jpg",
+      "https://i.dummyjson.com/data/products/11/3.jpg",
+      "https://i.dummyjson.com/data/products/11/4.jpg",
+      "https://i.dummyjson.com/data/products/11/thumbnail.jpg"
+  ]
+}
+
+
+
+
+
+
+
+
+
 ]

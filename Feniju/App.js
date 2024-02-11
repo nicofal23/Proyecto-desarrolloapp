@@ -1,3 +1,4 @@
+//app.jsx
 import { useState } from "react";
 import { Platform, SafeAreaView, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
@@ -27,10 +28,10 @@ export default function App() {
       colors={['#4c669f', '#3b5998', '#192f6a']}
       style={styles.container}
     >
-      <Header/>
+      <Header setCategorySelected={setCategorySelected} setProductDetailId={setProductDetailId} />
       <StatusBar style="auto" />
       {productDetailId ? (
-        <ItemDetail productDetailId={productDetailId}  />
+        <ItemDetail productDetailId={productDetailId} setProductDetailId={setProductDetailId}  />
       ) : categorySelected ? (
         <ItemListCategories
           setCategorySelected={setCategorySelected}
