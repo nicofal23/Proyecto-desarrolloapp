@@ -43,10 +43,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize:50,
         margin: 20,
-        color: 'white',
-        textShadowColor: 'rgba(0, 0, 0, 0.75)', 
-        textShadowOffset: { width: 2, height: 2 }, 
-        textShadowRadius: 10, 
+        color: 'white'
     },
     textBackground: {
         margin:10,

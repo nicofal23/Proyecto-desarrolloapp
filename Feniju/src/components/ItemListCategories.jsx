@@ -44,6 +44,7 @@ export default ItemListCategories;
 const styles = StyleSheet.create({
     container: {
         fontSize:20,
+        
     },
 });
 

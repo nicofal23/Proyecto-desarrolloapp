@@ -1,10 +1,13 @@
 //Header.jsx
 import { View, Text, StyleSheet, Image, Pressable} from "react-native";
-import {colors} from '../global/Colors'
-import {Carrito}  from "./Logo";
-import {LogoImage} from "./Logo";
+import { colors } from '../global/Colors'
+import { Carrito }  from "./Logo";
+import { LogoImage } from "./Logo";
+import { fonts } from '../global/fonts'
+import { useFonts } from "expo-font";
 
-function Header ({setCategorySelected,setProductDetailId}) {
+function Header ({setCategorySelected}) {
+    const [fontsLoaded] = useFonts(fonts);
     return ( 
         <View style={styles.menu}> 
             <View>
@@ -14,7 +17,7 @@ function Header ({setCategorySelected,setProductDetailId}) {
                 <Pressable onPress={() => setCategorySelected ()}>
                     <Text style={styles.titulo}>INICIO</Text>
                 </Pressable>
-                <Pressable onPress={()=> setProductDetailId ()}>
+                <Pressable onPress={() => setCategorySelected()}>
                     <Text style={styles.titulo}>PRODUCTOS</Text>
                 </Pressable>
                 <View>
@@ -41,7 +44,8 @@ const styles =StyleSheet.create({
         justifyContent: 'center',
         color: colors.font,
         fontSize:15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily:'FontWeb'
     },
     logo: {
         marginTop:15,

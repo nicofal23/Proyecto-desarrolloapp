@@ -12,6 +12,8 @@ import Header from './src/components/Header'
 import { LinearGradient } from 'expo-linear-gradient';
 
 
+
+
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);
 

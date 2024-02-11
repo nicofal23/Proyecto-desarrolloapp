@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 
 const Card = ({children, style}) => {
   return (
-    <View style={{...styles.container, ...style}}>
+    <View style={{...styles.card, ...style}}>
       {children}
     </View>
   );
@@ -19,16 +19,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
-  },
-  thumbnail: {
-    width: 80,
-    height: 80,
-    marginRight: 10,
+    fontFamily: 'FontWeb',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent: 'center'
   },
   title: {
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 5,
+    color: "white"
   },
   description: {
     marginBottom: 5,

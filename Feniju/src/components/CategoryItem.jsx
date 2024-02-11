@@ -1,13 +1,14 @@
-import { Pressable, StyleSheet, Text } from "react-native";
-import Card from "./Card";
+import { Pressable, StyleSheet, Text,View } from "react-native";
+
+
 
 const CategoryItem = ({ category, setCategorySelected }) => {
   return (
-    <Card style={{ marginVertical: 20 }}>
+    <View style={styles.card}>
       <Pressable onPress={() => setCategorySelected(category)}>
         <Text style={styles.text}>{category}</Text>
       </Pressable>
-    </Card>
+    </View>
   );
 };
 
@@ -17,11 +18,15 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
     card: {
-        width: 10
+        marginVertical: 20 ,
+        justifyContent:'center',
+        alignItems:'center',
+        alignContent:'center'
     },
   text: {
-    fontSize: 25,
-    fontFamily: 'FontWeb'
+    fontSize: 45,
+    fontFamily: 'FontWeb',
+    color: 'white',
   },
  
 });
