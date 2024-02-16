@@ -5,7 +5,7 @@ import getImageSource from './FuenteImage'
 import CategoryItem from './CategoryItem';
 
 
-function Categories ({setCategorySelected}){
+function Categories ({ navigation }){
     return (
         <View style={styles.contenedorcategories}>
             <FlatList
@@ -15,7 +15,7 @@ function Categories ({setCategorySelected}){
                 source={getImageSource(item)}
                 style={styles.textBackground}
             >
-                <CategoryItem setCategorySelected={setCategorySelected} category={item} />
+                <CategoryItem navigation={navigation} category={item}/>
             </ImageBackground>
         )}
              keyExtractor={(category) => category}

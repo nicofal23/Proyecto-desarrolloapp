@@ -6,29 +6,35 @@ import allProducts from "../data/products.json";
 import Search from "../components/Search";
 
 
-const ItemListCategories = ({ category, setProductDetailId , setCategorySelected}) => {
+const ItemListCategories = ({ navigation, route }) => {
     const [products, setProducts] = useState([]);
     const [keyword, setKeyword] = useState("");
 
+    const { category } = route.params;
+
     useEffect(() => {
         if (category) {
-            const filteredProducts = allProducts.filter(product => product.category === category);
-            const productsFiltered = filteredProducts.filter(product => product.title.includes(keyword));
-            setProducts(productsFiltered);
-        } else {
-            const productsFiltered = allProducts.filter(product => product.title.includes(keyword));
-            setProducts(productsFiltered);
-        }
-    }, [category, keyword]);
+      const products = allProducts.filter((product) => product.category === category);
+      const filteredProducts = products.filter((product) =>
+        product.title.includes(keyword)
+      );
+      setProducts(filteredProducts);
+    } else {
+      const filteredProducts = allProducts.filter((product) =>
+        product.title.includes(keyword)
+      );
+      setProducts(filteredProducts);
+    }
+  }, [category, keyword]);
 
     return (
         <View style={styles.container}>
             <View>
-                <Search onSearch={setKeyword} setCategorySelected={setCategorySelected}/>
+                <Search onSearch={setKeyword}/>
             </View>
             <FlatList
                 data={products}
-                renderItem={({ item }) => <ProductItem product={item} setProductDetailId={setProductDetailId} />}
+                renderItem={({ item }) => <ProductItem product={item} navigation={navigation} />}
                 keyExtractor={(item) => item.id}
             />
               <StatusBar/>

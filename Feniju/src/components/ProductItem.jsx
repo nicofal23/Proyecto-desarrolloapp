@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { View, Image, Pressable, StyleSheet, Text, useWindowDimensions } from "react-native";
 import Card from "./Card";
 
-const ProductItem = ({ product, setProductDetailId }) => {
+const ProductItem = ({ product, navigation }) => {
   const [isPortrait, setIsPortrait] = useState(true);
   const [isLandscape, setIsLandscape] = useState(false);
 
@@ -21,7 +21,7 @@ const ProductItem = ({ product, setProductDetailId }) => {
 
   return (
     <View style={styles.contenedor}>
-      <Pressable onPress={() => setProductDetailId(product.id)}>
+      <Pressable onPress={() => navigation.navigate("ItemDetail", {id: product.id})}>
         <Card style={styles.card}>
           <View>
             <Text style={width < 400 ? styles.textMin : styles.text}>{product.title}</Text>

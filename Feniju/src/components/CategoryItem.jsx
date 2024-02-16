@@ -1,11 +1,12 @@
+//CategoryItem.jsx
 import { Pressable, StyleSheet, Text,View } from "react-native";
 
 
 
-const CategoryItem = ({ category, setCategorySelected }) => {
+const CategoryItem = ({ category, navigation }) => {
   return (
     <View style={styles.card}>
-      <Pressable onPress={() => setCategorySelected(category)}>
+      <Pressable onPress={() => navigation.navigate("ItemListCategories", {category})}>
         <Text style={styles.text}>{category}</Text>
       </Pressable>
     </View>
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
         marginVertical: 20 ,
         justifyContent:'center',
         alignItems:'center',
-        alignContent:'center'
+        alignContent:'center',
     },
   text: {
     fontSize: 45,

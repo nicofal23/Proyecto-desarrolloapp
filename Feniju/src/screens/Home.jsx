@@ -1,19 +1,15 @@
-//home.jsx
-import {View, StyleSheet, StatusBar } from "react-native"
-import  Header  from "../components/Header"  
-import Categories from "../components/Categories"
+// home.jsx
+import { View, StyleSheet, StatusBar } from "react-native";
+import Categories from "../components/Categories";
 
-
-
-function Home ({setCategorySelected}) {
-  return(
+function Home({ navigation }) {
+  return (
     <View style={styles.body}>
       <StatusBar />
-      <Categories setCategorySelected={setCategorySelected}/>
+      <Categories navigation={navigation} /> 
     </View>
-  ); 
+  );
 }
-
 
 export default Home;
 
@@ -27,4 +23,4 @@ contenedorImage: {
   alignItems:'center',
   paddingTop:20
 }
-})
+}) 

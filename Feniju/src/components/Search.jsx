@@ -34,11 +34,6 @@ return (
                 <Entypo name="cross" size={25} color="black"/>
             </Pressable>
         </View>
-        <View style={styles.buttoncontainer}>
-          <Pressable style={styles.backButton} onPress={()=> setCategorySelected ()} >
-            <Text style={styles.backButtonText} >Volver</Text>
-          </Pressable>
-        </View>
     </View>
 );
 }
@@ -47,7 +42,7 @@ export default Search;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
+    flexDirection: "column", 
     justifyContent: "center",
     alignItems: "center",
     width: '100%',

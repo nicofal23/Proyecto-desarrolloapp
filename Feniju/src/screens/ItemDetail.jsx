@@ -2,14 +2,15 @@ import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../data/products.json";
 
-const ItemDetail = ({ productDetailId, setProductDetailId }) => {
+const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+ 
+  const {id} = route.params;
 
   useEffect(() => {
-    const productFound = allProducts.find((product) => product.id === productDetailId);
-    setProduct(productFound);
-  }, [productDetailId]);
+    const productFinded = allProducts.find((product) => product.id === id);
+    setProduct(productFinded);
+  }, [id]);
 
   const renderImages = () => {
     if (product && product.images && product.images.length > 0) {
@@ -28,10 +29,10 @@ const ItemDetail = ({ productDetailId, setProductDetailId }) => {
       <View style={styles.imageContainer}>
         {renderImages()}
       </View>
-      <Pressable style={styles.backButton} onPress={()=> setProductDetailId ()} >
-        <Text style={styles.backButtonText} >Volver</Text>
-      </Pressable>
-    </View>
+      <Pressable style={styles.buyButton}>
+            <Text style={styles.buyButtonText}>Comprar</Text>
+          </Pressable>
+    </View> 
   ) : (
     <Text style={styles.loading}>Cargando...</Text>
   );
@@ -65,15 +66,17 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: "#888",
   },
-  backButton: {
-    backgroundColor: '#007bff', 
-    padding: 10, 
+  buyButton: {
+    backgroundColor: "blue",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderRadius: 5,
+    marginTop: 10,
   },
-  backButtonText: {
-    color: '#ffffff', 
-    fontWeight: 'bold', 
-    textAlign: 'center', 
+  buyButtonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
   },
   imageContainer: {
     justifyContent: "center",

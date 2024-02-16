@@ -1,52 +1,27 @@
-//app.jsx
-import { useState } from "react";
-import { Platform, SafeAreaView, StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
-import Constants from "expo-constants";
-import Home from "./src/screens/Home";
-import ItemDetail from "./src/screens/ItemDetail";
-import ItemListCategories from "./src/components/ItemListCategories";
 import { fonts } from "./src/global/fonts";
-import { StatusBar } from "expo-status-bar";
-import Header from './src/components/Header'
+import Navigator from "./src/Navigation/Navigator";
 import { LinearGradient } from 'expo-linear-gradient';
-
-
-
+import { Platform, StyleSheet } from "react-native";
+import Constants from "expo-constants";
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);
 
-  const [categorySelected, setCategorySelected] = useState("");
-  const [productDetailId, setProductDetailId] = useState(0);
-
   if (!fontsLoaded) {
     return null;
   }
-
   return (
-    <SafeAreaView style={styles.container}>
-      <LinearGradient
-      colors={['#4c669f', '#3b5998', '#192f6a']}
-      style={styles.container}
+    <LinearGradient
+      colors={["#4c669f", "#3b5998", "#192f6a"]}
+      style={{ flex: 1 }}
     >
-      <Header setCategorySelected={setCategorySelected} setProductDetailId={setProductDetailId} />
-      <StatusBar style="auto" />
-      {productDetailId ? (
-        <ItemDetail productDetailId={productDetailId} setProductDetailId={setProductDetailId}  />
-      ) : categorySelected ? (
-        <ItemListCategories
-          setCategorySelected={setCategorySelected}
-          category={categorySelected}
-          setProductDetailId={setProductDetailId}
-        />
-      ) : (
-        <Home setCategorySelected={setCategorySelected} />
-      )}
+      <Navigator />
     </LinearGradient>
-    </SafeAreaView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
