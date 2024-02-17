@@ -11,6 +11,8 @@ function Header ({title}) {
         <View style={styles.menu}> 
             <View>
                 <Image source={LogoImage} style={styles.logo}/>
+            </View>
+            <View style={styles.tituloconteiner}>
                 <Text style={styles.titulo}>{title}</Text>
             </View>
         </View>
@@ -37,6 +39,11 @@ const styles =StyleSheet.create({
         marginTop:20,
         marginBottom:20
     },
+    tituloconteiner:{
+        justifyContent:'end',
+        alignItems:'end',
+        textAlign:'end'
+    },
     logo: {
         marginTop:15,
         width:160,
@@ -47,6 +54,7 @@ const styles =StyleSheet.create({
         height:40,
     },
     menu: {
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor:'#818CAA'
     }
 })

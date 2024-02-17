@@ -1,42 +1,46 @@
-import { useState } from "react"
-import { Pressable, TextInput, View , StyleSheet, Text} from "react-native";
-import {Entypo} from "@expo/vector-icons";
+import { useState } from "react";
+import { Pressable, TextInput, View, StyleSheet, Text } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 import { Octicons } from '@expo/vector-icons';
 
-
-const Search = ({onSearch, setCategorySelected}) => {
+const Search = ({ onSearch, setCategorySelected }) => {
     const [input, setInput] = useState("");
 
-  const search = () => {
-    if (input) {
-      onSearch(input);
-    }
-  };
-  const removeInput = () => {
-    setInput("");
-    onSearch("");
-  };
+    const formatInput = (text) => {
+        return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    };
 
+    const search = () => {
+        if (input.trim()) {
+            onSearch(formatInput(input));
+        }
+    };
 
-return ( 
-    <View style={styles.container}>
-        <View style={styles.inputContainer}>
-            <TextInput
-            style = {styles.input}
-            value = {input}
-            onChangeText={setInput}
-            placeholder ="Busca..."
-            />
-            <Pressable onPress= {search}>
-                <Octicons name="search" size={24} color="black" />
-            </Pressable>
-            <Pressable onPress={removeInput}>
-                <Entypo name="cross" size={25} color="black"/>
-            </Pressable>
+    const removeInput = () => {
+        setInput("");
+        onSearch("");
+    };
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    value={input}
+                    onChangeText={(text) => setInput(text)}
+                    placeholder="Busca..."
+                />
+                <Pressable onPress={search}>
+                    <Octicons name="search" size={24} color="black" />
+                </Pressable>
+                <Pressable onPress={removeInput}>
+                    <Entypo name="cross" size={25} color="black" />
+                </Pressable>
+            </View>
         </View>
-    </View>
-);
+    );
 }
+
 
 export default Search;
 

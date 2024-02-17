@@ -4,6 +4,7 @@ import Home from "../screens/Home";
 import ItemDetail from "../screens/ItemDetail";
 import ItemListCategories from "../components/ItemListCategories";
 import Header from "../components/Header";
+import {StyleSheet} from 'react-native';
 
 const Navigator = () => {
   const Stack = createNativeStackNavigator();
@@ -23,12 +24,12 @@ const Navigator = () => {
                     ? route.params.category
                     : "DETALLE"
                 }
-              />
+                />
             );
           },
         })}
       >
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home}  />
         <Stack.Screen name="ItemDetail" component={ItemDetail} />
         <Stack.Screen name="ItemListCategories" component={ItemListCategories} />
       </Stack.Navigator>
@@ -37,3 +38,11 @@ const Navigator = () => {
 };
 
 export default Navigator;
+
+
+
+const styles =StyleSheet.create({
+  menu:{
+    backgroundColor: 'black',
+  }
+})
