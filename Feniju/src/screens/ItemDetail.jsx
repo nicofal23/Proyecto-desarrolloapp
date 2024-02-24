@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../data/products.json";
+import Counter from "../components/Counter";
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
@@ -25,14 +26,16 @@ const ItemDetail = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
+      <Text style={styles.price}>Cantidad: {product.stock}</Text>
       <Text style={styles.price}>Price: ${product.price}</Text>
       <View style={styles.imageContainer}>
         {renderImages()}
       </View>
-      <Pressable style={styles.buyButton}>
+            <Counter stock={product.stock}/>
+          <Pressable style={styles.buyButton}>
             <Text style={styles.buyButtonText}>Comprar</Text>
           </Pressable>
-    </View> 
+      </View> 
   ) : (
     <Text style={styles.loading}>Cargando...</Text>
   );
@@ -83,8 +86,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 300,
-    height: 300,
+    width: 200,
+    height: 200,
     resizeMode: "contain",
   },
 });

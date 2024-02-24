@@ -55,6 +55,6 @@ const styles =StyleSheet.create({
     },
     menu: {
         alignItems:'center',
-        backgroundColor:'#818CAA'
+        backgroundColor: colors.header
     }
 })
