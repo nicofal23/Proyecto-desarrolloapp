@@ -2,16 +2,18 @@
 import { View, StyleSheet, ImageBackground, FlatList } from "react-native";
 import getImageSource from './FuenteImage'
 import CategoryItem from './CategoryItem';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useGetCategoriesQuery } from "../services/shopService";
 
 
-function Categories ({ navigation }){
-    const categories = useSelector(state => state.shopReducer.value.categories)
-
+function Categories({ navigation }) {
+    // const categories = useSelector((state) => state.shopReducer.value.categories);
+    const { data, isLoading, error } = useGetCategoriesQuery();
+    
     return (
         <View style={styles.contenedorcategories}>
             <FlatList
-             data={categories}
+             data={data}
              renderItem={({item})=>( 
                 <ImageBackground
                 source={getImageSource(item)}

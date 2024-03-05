@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, FlatList, Text} from 'react-native';
-import allCartItems from '../data/cart.json';
 import CartItem from '../components/CartItem';
-import { colors } from '../global/Colors'
+import { colors } from '../global/Colors';
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState(0)
 
-  useEffect(() => {
-    const total = allCartItems.reduce((acc, currentItem)=> acc += (currentItem.quantity * currentItem.price),0)
-    setCartItems(allCartItems);
-    setTotal(total)
-  }, []);
+  const cartItems = useSelector((state) => state.cartReducer.value.items);
+  const total = useSelector((state) => state.cartReducer.value.total);
 
   return (
     <View>
+      {cartItems.length > 0 ? (
+        <>
       <FlatList
         data={cartItems}
         renderItem={({ item }) => <CartItem item={item} />}
@@ -26,6 +22,9 @@ const Cart = () => {
           <Text style={styles.text}>Total: ${total}</Text>
         </View>
       </View>
+      </>) : (
+        <Text>No hay productos agregados</Text>
+      )}
     </View>
   );
 };

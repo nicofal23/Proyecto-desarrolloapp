@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 
 const Card = ({children, style}) => {
   return (
-    <View style={{...styles.card, ...style}}>
+    <View style={{...styles.container, ...style}}>
       {children}
     </View>
   );

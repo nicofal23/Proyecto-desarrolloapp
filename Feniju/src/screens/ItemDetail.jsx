@@ -2,11 +2,20 @@ import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../data/products.json";
 import Counter from "../components/Counter";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/shop/cartSlice";
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
  
   const {id} = route.params;
+
+  const dispatch = useDispatch()
+
+  const onAddCart = () => {
+    dispatch(addItem({...product, quantity: 1}))
+  }
+
 
   useEffect(() => {
     const productFinded = allProducts.find((product) => product.id === id);
@@ -32,8 +41,8 @@ const ItemDetail = ({ navigation, route }) => {
         {renderImages()}
       </View>
             <Counter stock={product.stock}/>
-          <Pressable style={styles.buyButton}>
-            <Text style={styles.buyButtonText}>Comprar</Text>
+          <Pressable style={styles.buyButton} onPress={onAddCart}>
+            <Text style={styles.buyButtonText}>Agregar al carrito</Text>
           </Pressable>
       </View> 
   ) : (

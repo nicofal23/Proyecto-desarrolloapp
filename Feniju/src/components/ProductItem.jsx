@@ -8,16 +8,17 @@ const ProductItem = ({ product, navigation }) => {
 
   const { width, height } = useWindowDimensions();
 
+  console.log(width, height);
 
-  useEffect(()=> {
-    if(height > width) {
+  useEffect(() => {
+    if (height > width) {
       setIsPortrait(true);
       setIsLandscape(false);
     } else {
       setIsPortrait(false);
       setIsLandscape(true);
     }
-  }, [width, height])
+  }, [width, height]);
 
   return (
     <View style={styles.contenedor}>

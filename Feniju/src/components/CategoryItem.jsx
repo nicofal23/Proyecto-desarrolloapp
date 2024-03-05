@@ -6,13 +6,16 @@ import { setCategorySelected } from "../features/shop/shopSlice";
 
 
 const CategoryItem = ({ category, navigation }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+
   return (
     <View style={styles.card}>
-      <Pressable onPress={() => {
-        dispatch(setCategorySelected(category)) 
-        navigation.navigate("ItemListCategories", {category})
-      }}>
+      <Pressable
+      onPress={() => {
+        dispatch(setCategorySelected(category))
+        navigation.navigate("ItemListCategories", { category });
+      }}
+    >
         <Text style={styles.text}>{category}</Text>
       </Pressable>
     </View>
