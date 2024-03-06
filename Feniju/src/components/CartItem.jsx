@@ -1,23 +1,32 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
-import React from 'react'
-import { colors } from '../global/Colors'
+import React from 'react';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { colors } from '../global/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { useDispatch } from 'react-redux'; // Importa useDispatch para despachar acciones
+import { removeItem } from '../features/shop/cartSlice'; // Importa la acción removeItem del slice del carrito
 
+const CartItem = ({ item }) => {
+  const dispatch = useDispatch(); // Obtén la función dispatch para despachar acciones
 
-const CartItem = ({item}) => {
+  const handleRemoveItem = () => {
+    dispatch(removeItem({ productId: item.id })); // Despacha la acción removeItem con el ID del producto como payload
+  };
+
   return (
-    <View style={styles.card} onPress={()=> {}}>
-        <View style={styles.textContainer}>
-            <Text style={styles.text}>Nombre: {item.title}</Text>
-            <Text style={styles.text2}>Precio: ${item.price}</Text>
-            <Text style={styles.text2}>Cantidad: {item.quantity}</Text>
-        </View>
+    <View style={styles.card}>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Nombre: {item.title}</Text>
+        <Text style={styles.text2}>Precio: ${item.price}</Text>
+        <Text style={styles.text2}>Cantidad: {item.quantity}</Text>
+      </View>
+      <Pressable onPress={handleRemoveItem}>
         <Ionicons name="trash-bin-outline" size={24} color="black" />
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;
 
 const styles = StyleSheet.create({
     card:{

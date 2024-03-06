@@ -47,16 +47,16 @@ export const cartSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-        const productIdToRemove = action.payload.productId;
-        const updatedItems = state.value.items.filter(item => item.id !== productIdToRemove);
-        const total = updatedItems.reduce((acc, currentItem) => (acc += currentItem.price * currentItem.quantity), 0);
-        
-        state.value = {
-          ...state.value,
-          items: updatedItems,
-          total,
-          updatedAt: new Date().toLocaleString(),
-        };
+      const productIdToRemove = action.payload.productId;
+      state.value = {
+        ...state.value,
+        items: state.value.items.filter((item) => item.id !== productIdToRemove),
+        total: state.value.items.reduce(
+          (acc, currentItem) => (acc += currentItem.price * currentItem.quantity),
+          0
+        ),
+        updatedAt: new Date().toLocaleString(),
+      };
     },
   },
 });
