@@ -4,26 +4,32 @@ import allProducts from "../data/products.json";
 import Counter from "../components/Counter";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/shop/cartSlice";
+import Toast from 'react-native-toast-message';
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const {id} = route.params;
+  const { id } = route.params;
   const dispatch = useDispatch();
 
   const onAddCart = () => {
-    dispatch(addItem({...product, quantity: 1}))
-  }
+    dispatch(addItem({ ...product, quantity: 1 }));
+  
+    Toast.show({
+      type: 'success', 
+      text1: '¡Agregado al carrito!',
+      visibilityTime: 1000,
+    });
+  };
 
   useEffect(() => {
-    const productFinded = allProducts.find((product) => product.id === id);
-    setProduct(productFinded);
-    // Simular un tiempo de carga de 2 segundos para mostrar el cargador
+    const productFound = allProducts.find((product) => product.id === id);
+    setProduct(productFound);
     const timer = setTimeout(() => {
-      setIsLoading(false); // Indicar que se ha terminado de cargar
-    }, 2000);
-    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [id]);
 
   const renderImages = () => {
@@ -37,7 +43,7 @@ const ItemDetail = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      {isLoading ? ( 
+      {isLoading ? (
         <View style={styles.loaderContainer}>
           <ActivityIndicator size="large" color="#0000ff" />
           <Text style={styles.loadingText}>Cargando...</Text>
@@ -51,13 +57,13 @@ const ItemDetail = ({ navigation, route }) => {
           <View style={styles.imageContainer}>
             {renderImages()}
           </View>
-          <Counter stock={product.stock}/>
+          <Counter stock={product.stock} />
           <Pressable style={styles.buyButton} onPress={onAddCart}>
             <Text style={styles.buyButtonText}>Agregar al carrito</Text>
           </Pressable>
         </>
       )}
-    </View> 
+    </View>
   );
 };
 
