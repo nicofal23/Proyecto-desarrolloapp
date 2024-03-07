@@ -2,14 +2,21 @@ import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { colors } from '../global/Colors';
 import { Ionicons } from '@expo/vector-icons';
-import { useDispatch } from 'react-redux'; // Importa useDispatch para despachar acciones
-import { removeItem } from '../features/shop/cartSlice'; // Importa la acción removeItem del slice del carrito
+import { useDispatch } from 'react-redux'; 
+import { removeItem } from '../features/shop/cartSlice'; 
+import Toast from 'react-native-toast-message';
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch(); // Obtén la función dispatch para despachar acciones
 
-  const handleRemoveItem = () => {
-    dispatch(removeItem({ productId: item.id })); // Despacha la acción removeItem con el ID del producto como payload
+  const handleRemoveItem = () => { 
+    dispatch(removeItem({ productId: item.id }));
+
+    Toast.show({
+      type: 'info', 
+      text1: '¡Producto eliminado!',
+      visibilityTime: 1000,
+  });
   };
 
   return (
