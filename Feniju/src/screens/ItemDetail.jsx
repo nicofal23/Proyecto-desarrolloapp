@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator } from "react-native";
 import allProducts from "../data/products.json";
 import Counter from "../components/Counter";
 import { useDispatch } from "react-redux";
@@ -7,19 +7,23 @@ import { addItem } from "../features/shop/cartSlice";
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
- 
-  const {id} = route.params;
+  const [isLoading, setIsLoading] = useState(true);
 
-  const dispatch = useDispatch()
+  const {id} = route.params;
+  const dispatch = useDispatch();
 
   const onAddCart = () => {
     dispatch(addItem({...product, quantity: 1}))
   }
 
-
   useEffect(() => {
     const productFinded = allProducts.find((product) => product.id === id);
     setProduct(productFinded);
+    // Simular un tiempo de carga de 2 segundos para mostrar el cargador
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Indicar que se ha terminado de cargar
+    }, 2000);
+    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
   }, [id]);
 
   const renderImages = () => {
@@ -31,22 +35,29 @@ const ItemDetail = ({ navigation, route }) => {
     return null;
   };
 
-  return product ? (
+  return (
     <View style={styles.container}>
-      <Text style={styles.title}>{product.title}</Text>
-      <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.price}>Cantidad: {product.stock}</Text>
-      <Text style={styles.price}>Price: ${product.price}</Text>
-      <View style={styles.imageContainer}>
-        {renderImages()}
-      </View>
-            <Counter stock={product.stock}/>
+      {isLoading ? ( 
+        <View style={styles.loaderContainer}>
+          <ActivityIndicator size="large" color="#0000ff" />
+          <Text style={styles.loadingText}>Cargando...</Text>
+        </View>
+      ) : (
+        <>
+          <Text style={styles.title}>{product.title}</Text>
+          <Text style={styles.description}>{product.description}</Text>
+          <Text style={styles.price}>Cantidad: {product.stock}</Text>
+          <Text style={styles.price}>Price: ${product.price}</Text>
+          <View style={styles.imageContainer}>
+            {renderImages()}
+          </View>
+          <Counter stock={product.stock}/>
           <Pressable style={styles.buyButton} onPress={onAddCart}>
             <Text style={styles.buyButtonText}>Agregar al carrito</Text>
           </Pressable>
-      </View> 
-  ) : (
-    <Text style={styles.loading}>Cargando...</Text>
+        </>
+      )}
+    </View> 
   );
 };
 
@@ -54,11 +65,23 @@ export default ItemDetail;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
     backgroundColor: "#93a7de",
     borderRadius: 10,
     margin: 10,
+  },
+  loaderContainer: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: "black",
   },
   title: {
     fontSize: 24,
@@ -72,11 +95,6 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 18,
     fontWeight: "bold",
-  },
-  loading: {
-    fontSize: 18,
-    fontStyle: "italic",
-    color: "#888",
   },
   buyButton: {
     backgroundColor: "blue",

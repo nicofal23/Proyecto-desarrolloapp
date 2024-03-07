@@ -9,21 +9,24 @@ const Cart = () => {
   const total = useSelector((state) => state.cartReducer.value.total);
 
   return (
-    <View>
+    <View style={styles.container}>
       {cartItems.length > 0 ? (
         <>
-      <FlatList
-        data={cartItems}
-        renderItem={({ item }) => <CartItem item={item} />}
-        keyExtractor={(cartItem) => cartItem.id}
-      />
-      <View style={styles.card}>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>Total: ${total}</Text>
+          <FlatList
+            data={cartItems}
+            renderItem={({ item }) => <CartItem item={item} />}
+            keyExtractor={(cartItem) => cartItem.id}
+          />
+          <View style={styles.card}>
+            <View style={styles.textContainer}>
+              <Text style={styles.text}>Total: ${total}</Text>
+            </View>
+          </View>
+        </>
+      ) : (
+        <View style={styles.noProductsContainer}>
+          <Text style={styles.noProductsText}>No hay productos agregados</Text>
         </View>
-      </View>
-      </>) : (
-        <Text>No hay productos agregados</Text>
       )}
     </View>
   );
@@ -31,13 +34,18 @@ const Cart = () => {
 
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     card:{
         backgroundColor: colors.header,
         padding: 10,
         borderWidth:2,
         borderRadius:10,
         width:'40%',
-        marginLeft:10,
+        margin:10,
     },
     textContainer:{
       justifyContent:'center',
@@ -46,7 +54,17 @@ const styles = StyleSheet.create({
     text: {
       color:'black',
       fontSize:17
-    }
+    },
+    noProductsContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 20,
+    },
+    noProductsText: {
+      fontSize: 20,
+      fontStyle: 'italic',
+      color: '#888',
+    },
 })
 
 export default Cart;
