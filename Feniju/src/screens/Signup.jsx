@@ -6,8 +6,10 @@ import SubmitButton from "../components/SubmitButton";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
 import { signupSchema } from "../validations/signupSchema";
+import { useNavigation } from '@react-navigation/native';
 
 const Signup = () => {
+    const navigation = useNavigation();
     const [name, setName] = useState(""); 
     const [errorname, setErrorName] = useState("");
     const [email, setEmail] = useState("");
@@ -97,6 +99,9 @@ const Signup = () => {
                 style={styles.input}
             />
             <SubmitButton title={"Registrarme"} onPress={onSubmit} />
+            <Pressable onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.link}>Ya tenes cuenta ?  Ingresar a mi cuenta</Text>
+            </Pressable>
         </View>
     );
 };
@@ -116,5 +121,11 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
+    },
+    link: {
+        color: 'blue',
+        fontSize: 16,
+        textAlign: 'center',
+        marginTop:10,
     },
 });

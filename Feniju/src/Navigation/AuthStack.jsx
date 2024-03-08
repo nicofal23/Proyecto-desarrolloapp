@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator()
 
 const AuthStack = () =>{
     return (
-        <Stack.Navigator initialRouteName="Register"
+        <Stack.Navigator initialRouteName="Login"
         screenOptions={{header: ()=> <Header title="Bienvenidos!"/>}}>
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="Register" component={Singup}/>
