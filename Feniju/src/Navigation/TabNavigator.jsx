@@ -25,8 +25,8 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <View style={styles.tabContainer}>
-                <Entypo name="shop" size={30} color={focused ? "black" : "grey"} />
-                <Text style={{ color: focused ? "black" : "grey" }}>Shop</Text>
+                <Entypo name="shop" size={30} color={focused ? "black" : "white"} />
+                <Text style={{ color: focused ? "black" : "white" }}>Shop</Text>
               </View>
             );
           },
@@ -42,9 +42,9 @@ const TabNavigator = () => {
                 <AntDesign
                   name="shoppingcart"
                   size={30}
-                  color={focused ? "black" : "grey"}
+                  color={focused ? "black" : "white"}
                 />
-                <Text style={{ color: focused ? "black" : "grey" }}>Cart</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Cart</Text>
               </View>
             );
           },
@@ -60,9 +60,9 @@ const TabNavigator = () => {
                 <FontAwesome
                   name="list-ul"
                   size={30}
-                  color={focused ? "black" : "grey"}
+                  color={focused ? "black" : "white"}
                 />
-                <Text style={{ color: focused ? "black" : "grey" }}>Orders</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Orders</Text>
               </View>
             );
           },
@@ -78,9 +78,9 @@ const TabNavigator = () => {
                 <EvilIcons 
                   name="user"
                   size={30}
-                  color={focused ? "black" : "grey"}
+                  color={focused ? "black" : "white"}
                 />
-                <Text style={{ color: focused ? "black" : "grey" }}>Mi Perfil</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Mi Perfil</Text>
               </View>
             );
           },

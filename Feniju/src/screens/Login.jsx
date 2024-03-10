@@ -60,12 +60,12 @@ const Login = ({ navigation }) => {
       {result.isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <SubmitButton title={"Registrarse"} onPress={onSubmit} />
+        <SubmitButton title={"Ingresar"} onPress={onSubmit} />
       )}
       <View style={styles.contenedorText}>
         <Text>No tienes cuenta?</Text>
         <Pressable onPress={() => navigation.navigate("Register")}>
-            <Text style={styles.link}>REGRISTRARSE</Text>
+            <Text style={styles.link}>REGISTRATE</Text>
         </Pressable>
       </View>
     </View>
@@ -95,9 +95,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     contenedorText: {
-        margin: 10,
-        alignItems:'center'
-    }
+      margin: 10,
+      alignItems:'center',
+      margin:20,
+  }
 });
 
 

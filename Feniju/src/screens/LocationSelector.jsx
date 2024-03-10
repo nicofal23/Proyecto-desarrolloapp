@@ -58,7 +58,7 @@ const LocationSelector = () => {
 
   return (
     <View style={styles.container}>
-      <Text>My Adresses</Text>
+      <Text>Mi dirección</Text>
       {location.latitude ? (
         <View style={styles.noLocationContainer}>
           <Text>
@@ -67,7 +67,7 @@ const LocationSelector = () => {
           <MapPreview location={location} />
           <Text>{address}</Text>
           <Pressable style={styles.button} onPress={onConfirmAddress}>
-            <Text style={styles.text}>Confirm Address</Text>
+            <Text style={styles.text}>Confirmar Direcciòn</Text>
           </Pressable>
         </View>
       ) : (
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   text: {
-    fontFamily: "InterRegular",
     fontSize: 18,
     color: "white",
   },

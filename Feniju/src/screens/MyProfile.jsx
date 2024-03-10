@@ -25,13 +25,13 @@ const MyProfile = ({ navigation }) => {
         style={styles.button}
         onPress={() => navigation.navigate("Image Selector")}
       >
-        <Text style={styles.text}>Add profile picture</Text>
+        <Text style={styles.text}>Agregar imagen</Text>
       </Pressable>
       <Pressable
         style={styles.button}
         onPress={() => navigation.navigate("Location Selector")}
       >
-        <Text style={styles.text}>My addresses</Text>
+        <Text style={styles.text}>Mi Dirección</Text>
       </Pressable>
     </View>
   );
@@ -41,26 +41,30 @@ export default MyProfile;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    gap: 15,
+    flex: 1,
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
   },
   image: {
     width: 100,
     height: 100,
+    marginBottom: 20,
   },
   button: {
     width: "80%",
-    elevation: 10,
+    elevation: 8,
     backgroundColor: 'blue',
-    justifyContent: "center",
+    borderRadius: 10,
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    marginBottom: 20,
     alignItems: "center",
-    padding: 8,
   },
   text: {
-    fontFamily: "InterRegular",
     fontSize: 18,
     color: "white",
+    fontWeight: "bold",
   },
 });

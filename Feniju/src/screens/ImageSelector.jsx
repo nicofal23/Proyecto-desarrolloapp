@@ -30,7 +30,7 @@ const ImageSelector = ({ navigation }) => {
         quality: 1,
       });
 
-      if (!result.canceled) {
+      if (!result.cancelled) {
         setImage(result.assets[0].uri);
       }
     }
@@ -47,18 +47,18 @@ const ImageSelector = ({ navigation }) => {
       {image ? (
         <>
           <Image source={{ uri: image }} style={styles.image} />
-          <Pressable onPress={pickImage}>
-            <Text>Take another photo</Text>
+          <Pressable style={styles.button} onPress={pickImage}>
+            <Text style={styles.buttonText}>Tomar otra foto</Text>
           </Pressable>
-          <Pressable onPress={confirmImage}>
-            <Text>Confirm photo</Text>
+          <Pressable style={styles.button} onPress={confirmImage}>
+            <Text style={styles.buttonText}>Confirmar foto</Text>
           </Pressable>
         </>
       ) : (
         <View style={styles.noPhotoContainer}>
-          <Text>No photo to show...</Text>
-          <Pressable onPress={pickImage}>
-            <Text>Take a photo</Text>
+          <Text style={styles.noPhotoText}>No hay foto para mostrar </Text>
+          <Pressable style={styles.button} onPress={pickImage}>
+            <Text style={styles.buttonText}>Tomar foto</Text>
           </Pressable>
         </View>
       )}
@@ -73,11 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 20,
   },
   image: {
     width: 200,
     height: 200,
+    marginBottom: 20,
   },
   noPhotoContainer: {
     width: 200,
@@ -86,5 +86,20 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
+  },
+  noPhotoText: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
