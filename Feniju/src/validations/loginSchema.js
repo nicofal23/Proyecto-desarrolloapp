@@ -1,8 +1,8 @@
 import { object, string, ref } from "yup";
 
 export const loginSchema = object().shape({
-  email: string().required("Email is required").email("Not a valid email"),
+  email: string().required("se requiere Email ").email("email no valido"),
   password: string()
-    .required("Password is required")
+    .required("Contraseña requerida")
     .min(6, "Password must be at least 6 characters"),
 });

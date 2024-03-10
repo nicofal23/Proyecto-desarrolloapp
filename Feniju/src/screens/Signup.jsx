@@ -81,7 +81,7 @@ const Signup = () => {
 
     return (
         <View style={styles.container}>
-            <Text>Registrarse</Text>
+            <Text style={styles.title}>Registrarse</Text>
             <InputForm label={"Nombre"} error={errorname} onChange={setName} style={styles.input} />
             <InputForm label={"Email"} error={errorMail} onChange={setEmail} style={styles.input} />
             <InputForm
@@ -120,7 +120,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 20,
+        marginBottom: 10,
+        marginTop:10,
+        justifyContent:'center',
+        textAlign:'center'
     },
     link: {
         color: 'blue',
