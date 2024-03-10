@@ -60,7 +60,7 @@ const Login = ({ navigation }) => {
       {result.isLoading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <SubmitButton title={"Login"} onPress={onSubmit} />
+        <SubmitButton title={"Registrarse"} onPress={onSubmit} />
       )}
       <View style={styles.contenedorText}>
         <Text>No tienes cuenta?</Text>

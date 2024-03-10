@@ -21,7 +21,41 @@ export const shopApi = createApi({
                 body: order
             })
         }),
-    }),
-});
+        getProfileImage: builder.query({
+            query: (localId) => `profileImages/${localId}.json`,
+          }),
+          postProfileImage: builder.mutation({
+            query: ({ localId, image }) => ({
+              url: `profileImages/${localId}.json`,
+              method: "PUT",
+              body: {
+                image: image,
+              },
+            }),
+          }),
+          getUserLocation: builder.query({
+            query: (localId) => `locations/${localId}.json`,
+          }),
+          postUserLocation: builder.mutation({
+            query: ({ localId, location}) => ({
+              url: `locations/${localId}.json`,
+              method: "PUT",
+              body: {
+                latitude: location.latitude,
+                longitude: location.longitude,
+                address: location.address
+              },
+            })
+          })
+        }),
+      });
 
-export const { useGetProductsByCategoryQuery, useGetCategoriesQuery, usePostOrderMutation } = shopApi
+      export const {
+        useGetProductsByCategoryQuery,
+        useGetCategoriesQuery,
+        usePostOrderMutation,
+        useGetProfileImageQuery,
+        usePostProfileImageMutation,
+        useGetUserLocationQuery,
+        usePostUserLocationMutation,
+      } = shopApi;

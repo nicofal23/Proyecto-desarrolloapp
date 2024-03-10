@@ -4,8 +4,9 @@ import ShopStack from "./ShopStack";
 import CartStack from "./CartStack";
 import { colors } from "../global/Colors";
 import { StyleSheet, Text, View } from "react-native";
-import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
+import { Entypo, AntDesign, FontAwesome, EvilIcons } from "@expo/vector-icons";
 import OrdersStack from "./OrdersStack";
+import MyProfileStack from "./MyProfileStack";
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -67,7 +68,26 @@ const TabNavigator = () => {
           },
         }}
       />
+      <Tab.Screen
+        name="MyProfileStack"
+        component={MyProfileStack}
+        options={{
+          tabBarIcon: ({ focused }) => {
+            return (
+              <View style={styles.tabContainer}>
+                <EvilIcons 
+                  name="user"
+                  size={30}
+                  color={focused ? "black" : "grey"}
+                />
+                <Text style={{ color: focused ? "black" : "grey" }}>Mi Perfil</Text>
+              </View>
+            );
+          },
+        }}
+      />
     </Tab.Navigator>
+    
   );
 };
 
