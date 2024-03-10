@@ -21,7 +21,7 @@ export const authSlice = createSlice({
       state.value = {
         user: action.payload.email,
         token: action.payload.idToken,
-        localId: action.payload.localId
+        localId: action.payload.localId,
       };
     },
     clearUser: (state) => (state.value = { user: null, token: null }),
@@ -47,9 +47,22 @@ export const authSlice = createSlice({
         },
       };
     },
+    // Nueva acción para actualizar el perfil de usuario
+    updateUserProfile: (state, action) => {
+      state.value = {
+        ...state.value,
+        user: action.payload.name, // Actualiza el nombre de usuario
+        profileImage: action.payload.profileImage, // Actualiza la imagen de perfil
+        location: { // Actualiza la ubicación del usuario
+          latitude: action.payload.latitude,
+          longitude: action.payload.longitude,
+          address: action.payload.address,
+        },
+      };
+    },
   },
 });
 
-export const { setUser, clearUser, setCameraImage, setProfileImage, setUserLocation } = authSlice.actions;
+export const { setUser, clearUser, setCameraImage, setProfileImage, setUserLocation, updateUserProfile } = authSlice.actions;
 
 export default authSlice.reducer;

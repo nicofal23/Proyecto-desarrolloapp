@@ -20,7 +20,7 @@ const LocationSelector = () => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setError("Permission to access location was denied");
+        setError("El permiso para obtener la locación fue denegado");
         return;
       }
       let location = await Location.getCurrentPositionAsync();

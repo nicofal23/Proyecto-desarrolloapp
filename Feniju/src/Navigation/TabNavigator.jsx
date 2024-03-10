@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Entypo, AntDesign, FontAwesome, EvilIcons } from "@expo/vector-icons";
 import OrdersStack from "./OrdersStack";
 import MyProfileStack from "./MyProfileStack";
+import MyProfileTabIcon from "../components/MyProfileTab";
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -26,7 +27,7 @@ const TabNavigator = () => {
             return (
               <View style={styles.tabContainer}>
                 <Entypo name="shop" size={30} color={focused ? "black" : "white"} />
-                <Text style={{ color: focused ? "black" : "white" }}>Shop</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Tienda</Text>
               </View>
             );
           },
@@ -44,7 +45,7 @@ const TabNavigator = () => {
                   size={30}
                   color={focused ? "black" : "white"}
                 />
-                <Text style={{ color: focused ? "black" : "white" }}>Cart</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Carrito</Text>
               </View>
             );
           },
@@ -62,7 +63,7 @@ const TabNavigator = () => {
                   size={30}
                   color={focused ? "black" : "white"}
                 />
-                <Text style={{ color: focused ? "black" : "white" }}>Orders</Text>
+                <Text style={{ color: focused ? "black" : "white" }}>Ordenes</Text>
               </View>
             );
           },
@@ -75,11 +76,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused }) => {
             return (
               <View style={styles.tabContainer}>
-                <EvilIcons 
-                  name="user"
-                  size={30}
-                  color={focused ? "black" : "white"}
-                />
+                <MyProfileTabIcon/>
                 <Text style={{ color: focused ? "black" : "white" }}>Mi Perfil</Text>
               </View>
             );
