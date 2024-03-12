@@ -1,20 +1,63 @@
-// OrderItem.js
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, FlatList } from 'react-native'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native'; 
 import { colors } from '../global/Colors';
+import { useGetOrdersQuery } from '../services/shopService';
 
-const OrderItem = React.memo(({ item, total }) => {
-    return (
-        <View style={styles.card} onPress={() => {}}>
-            <View style={styles.textContainer}>
-                <Text style={styles.text}>{new Date(item.createdAt).toLocaleString()}</Text>
-                <Text style={styles.text2}>${total}</Text>
-            </View>
-            <MaterialCommunityIcons name="details" size={24} color="black" />
-        </View>
+const OrderItem = () => {
+    const { data: orders, error, isLoading, refetch } = useGetOrdersQuery(); 
+    const [formattedOrders, setFormattedOrders] = useState([]);
+
+    useEffect(() => {
+        refetch(); 
+    }, [refetch]); 
+
+    useEffect(() => {
+        if (orders) {
+            const formatted = Object.keys(orders).map(orderId => {
+                const order = orders[orderId];
+                const formattedDate = new Date(order.createdAt).toLocaleDateString('es-ES'); // Formatear la fecha
+                return { ...order, formattedDate, id: orderId }; 
+            });
+            setFormattedOrders(formatted);
+        }
+    }, [orders]);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            refetch();
+        }, [])
     );
-});
+
+    if (isLoading) {
+        return <Text>Loading...</Text>;
+    }
+    
+    if (error) {
+        return <Text>Error: {error.message}</Text>;
+    }
+    
+    if (!formattedOrders || formattedOrders.length === 0) {
+        return <Text>No hay órdenes disponibles</Text>;
+    }
+
+    return (
+        <FlatList 
+            data={formattedOrders}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+                <View style={styles.card}>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>{item.formattedDate}</Text>
+                        <Text style={styles.text2}>${item.total}</Text>
+                    </View>
+                    <MaterialCommunityIcons name="details" size={24} color="black" />
+                </View>
+            )}
+        />
+    );
+};
 
 const styles = StyleSheet.create({
     card: {

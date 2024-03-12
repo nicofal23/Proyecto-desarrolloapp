@@ -1,19 +1,18 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import * as Location from "expo-location";
 import MapPreview from "../components/MapPreview";
-import { googleAPI } from "../firebase/googleAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../features/auth/authSlice";
 import { usePostUserLocationMutation } from "../services/shopService";
+import { colors } from "../global/Colors";
 
 const LocationSelector = () => {
   const [location, setLocation] = useState({ latitude: "", longitude: "" });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
   const [address, setAddress] = useState(null);
   const { localId } = useSelector((state) => state.authReducer.value);
   const [triggerPostAddress, result] = usePostUserLocationMutation();
-//AIzaSyDtfGQZmpHJE3skzqnfBUaWnRaV9vhzNZ4
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,33 +44,31 @@ const LocationSelector = () => {
   }, [location]);
 
   const onConfirmAddress = () => {
-    console.log(address);
     const locationFormatted = {
       latitude: location.latitude,
       longitude: location.longitude,
       address: address,
     };
     dispatch(setUserLocation(locationFormatted));
-
-    triggerPostAddress({localId, location: locationFormatted});
+    triggerPostAddress({ localId, location: locationFormatted });
   };
 
   return (
     <View style={styles.container}>
-      <Text>Mi dirección</Text>
+      <Text style={styles.title}>Mi dirección</Text>
       {location.latitude ? (
         <View style={styles.noLocationContainer}>
-          <Text>
-            Lat: {location.latitude}, long: {location.longitude}
+          <Text style={styles.coordinates}>
+            Latitud: {location.latitude}, Longitud: {location.longitude}
           </Text>
+          <Text style={styles.address}>{address}</Text>
           <MapPreview location={location} />
-          <Text>{address}</Text>
           <Pressable style={styles.button} onPress={onConfirmAddress}>
-            <Text style={styles.text}>Confirmar Direcciòn</Text>
+            <Text style={styles.buttonText}>Confirmar Dirección</Text>
           </Pressable>
         </View>
       ) : (
-        <Text>{error}</Text>
+        <Text style={styles.errorText}>{error}</Text>
       )}
     </View>
   );
@@ -81,34 +78,48 @@ export default LocationSelector;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    gap: 20,
     paddingBottom: 130,
     paddingTop: 40,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    color: colors.primary,
   },
   noLocationContainer: {
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
+  },
+  coordinates: {
+    fontSize: 16,
+    marginBottom: 10,
   },
   address: {
-    padding: 10,
-    fontFamily: "InterRegular",
     fontSize: 16,
+    textAlign: "center",
+    marginVertical: 10,
+    color: 'blue'
   },
   button: {
     width: "80%",
-    elevation: 10,
+    elevation: 8,
     backgroundColor: 'blue',
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
+    borderRadius: 10,
+    padding: 14,
+    marginTop: 20,
   },
-  text: {
-    fontSize: 18,
-    color: "white",
+  buttonText: {
+    fontSize: 16,
+    color: "#fff",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  errorText: {
+    fontSize: 16,
+    color: "red",
   },
 });

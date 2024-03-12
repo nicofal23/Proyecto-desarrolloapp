@@ -18,7 +18,6 @@ const CartItem = ({ item }) => {
       visibilityTime: 1000,
     });
   };
-
   return (
     <View style={styles.card}>
       <View style={styles.textContainer}>

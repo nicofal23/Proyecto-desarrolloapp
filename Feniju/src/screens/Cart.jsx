@@ -10,13 +10,16 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.value.items);
   const total = useSelector((state) => state.cartReducer.value.total);
+  const userEmail = useSelector((state) => state.authReducer.value.user); 
   const [triggerPost, result] = usePostOrderMutation();
   const [isOrdering, setIsOrdering] = useState(false);
 
   const confirmCart = async () => {
     try {
       setIsOrdering(true);
-      const response = await triggerPost({ total, cartItems, user: "loggedUser" });
+      const currentDate = new Date().toISOString(); // Obtiene la fecha actual en formato ISO
+      const order = { total, cartItems, user: userEmail, createdAt: currentDate }; // Agrega la fecha al objeto de orden
+      const response = await triggerPost(order); // Envía el objeto de orden
       setIsOrdering(false);
       if (response && response.data) {
         showToast('success', 'Orden enviada correctamente');

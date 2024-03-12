@@ -1,15 +1,21 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import orders from '../data/orders.json'
-import OrderItem from '../components/OrderItem'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import OrderItem from '../components/OrderItem'; 
 
 const Orders = () => {
   return (
-    <View>
-      <FlatList data={orders} renderItem={({item})=> <OrderItem item={item}/>} keyExtractor={(order) => order.id} />
+    <View style={styles.container}>
+      <OrderItem />
     </View>
-  )
+  );
 }
 
-export default Orders
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
-const styles = StyleSheet.create({})
+export default Orders;
