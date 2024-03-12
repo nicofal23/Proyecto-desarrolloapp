@@ -1,28 +1,34 @@
-import React from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 
 const MyProfile = ({ navigation }) => {
-  const { profileImage, imageCamera, userData } = useSelector((state) => state.authReducer.value);
+  const { profileImage, imageCamera } = useSelector((state) => state.authReducer.value);
 
   return (
     <View style={styles.container}>
-      <View style={styles.profileContainer}>
+      {profileImage || imageCamera ? (
         <Image
-          source={profileImage ? { uri: profileImage } : require("../../assets/defaultprofile.png")}
+          source={{ uri: profileImage || imageCamera }}
           resizeMode="cover"
           style={styles.image}
         />
-        <Pressable
-          style={styles.editButton}
-          onPress={() => navigation.navigate("Image Selector")}
-        >
-          <Text style={styles.text}>Editar</Text>
-        </Pressable>
-      </View>
-      <Text style={styles.userData}>{userData ? `Nombre: ${userData.name}, Email: ${userData.email}` : 'Datos de usuario no disponibles'}</Text>
+      ) : (
+        <>
+          <Image
+            source={require("../../assets/defaultprofile.png")}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </>
+      )}
       <Pressable
-        style={[styles.button, { backgroundColor: 'green' }]}
+        style={styles.button}
+        onPress={() => navigation.navigate("Image Selector")}
+      >
+        <Text style={styles.text}>Agregar imagen</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
         onPress={() => navigation.navigate("Location Selector")}
       >
         <Text style={styles.text}>Mi Dirección</Text>
@@ -35,28 +41,16 @@ export default MyProfile;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    flex: 1,
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#fff",
     paddingHorizontal: 20,
-  },
-  profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 20,
   },
   image: {
     width: 100,
     height: 100,
-    borderRadius: 50,
-    margin: 5,
-  },
-  editButton: {
-    backgroundColor: 'blue',
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+    marginBottom: 20,
   },
   button: {
     width: "80%",
@@ -72,10 +66,5 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "white",
     fontWeight: "bold",
-    margin: 5,
-  },
-  userData: {
-    fontSize: 16,
-    marginBottom: 20,
   },
 });
