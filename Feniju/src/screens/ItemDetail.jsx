@@ -1,26 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator } from "react-native";
-import allProducts from "../data/products.json";
-import Counter from "../components/Counter";
-import { useDispatch } from "react-redux";
-import { addItem } from "../features/shop/cartSlice";
+// ItemDetail.js
+import React, { useState , useEffect } from 'react';
+import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator } from 'react-native';
+import allProducts from '../data/products.json';
+import Counter from '../components/Counter';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/shop/cartSlice';
 import Toast from 'react-native-toast-message';
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
 
   const { id } = route.params;
   const dispatch = useDispatch();
 
   const onAddCart = () => {
-    dispatch(addItem({ ...product, quantity: 1 }));
-  
+    dispatch(addItem({ ...product, quantity: selectedQuantity }));
+
     Toast.show({
-      type: 'success', 
+      type: 'success',
       text1: '¡Agregado al carrito!',
       visibilityTime: 1000,
     });
+  };
+
+  const renderImages = () => {
+    if (product && product.images && product.images.length > 0) {
+      return product.images.map((image, index) => (
+        <Image key={index} source={{ uri: image }} style={styles.image} />
+      ));
+    }
+    return null;
   };
 
   useEffect(() => {
@@ -31,15 +42,6 @@ const ItemDetail = ({ navigation, route }) => {
     }, 1000);
     return () => clearTimeout(timer);
   }, [id]);
-
-  const renderImages = () => {
-    if (product && product.images && product.images.length > 0) {
-      return product.images.map((image, index) => (
-        <Image key={index} source={{ uri: image }} style={styles.image} />
-      ));
-    }
-    return null;
-  };
 
   return (
     <View style={styles.container}>
@@ -57,7 +59,7 @@ const ItemDetail = ({ navigation, route }) => {
           <View style={styles.imageContainer}>
             {renderImages()}
           </View>
-          <Counter stock={product.stock} />
+          <Counter stock={product.stock} onChangeQuantity={setSelectedQuantity} />
           <Pressable style={styles.buyButton} onPress={onAddCart}>
             <Text style={styles.buyButtonText}>Agregar al carrito</Text>
           </Pressable>

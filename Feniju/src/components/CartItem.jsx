@@ -7,7 +7,7 @@ import { removeItem } from '../features/shop/cartSlice';
 import Toast from 'react-native-toast-message';
 
 const CartItem = ({ item }) => {
-  const dispatch = useDispatch(); // Obtén la función dispatch para despachar acciones
+  const dispatch = useDispatch(); 
 
   const handleRemoveItem = () => { 
     dispatch(removeItem({ productId: item.id }));
@@ -16,7 +16,7 @@ const CartItem = ({ item }) => {
       type: 'info', 
       text1: '¡Producto eliminado!',
       visibilityTime: 1000,
-  });
+    });
   };
 
   return (
@@ -36,29 +36,29 @@ const CartItem = ({ item }) => {
 export default CartItem;
 
 const styles = StyleSheet.create({
-    card:{
-        margin:10,
-        flex:1,
-        height:100,
-        backgroundColor: colors.header,
-        padding: 10,
-        borderWidth:2,
-        borderRadius:10,
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center'
-    },
-    textContainer: {
-        width:'70%',
-        flexDirection:'column',
-        justifyContent:'flex-start',
-    },
-    text: {
-        fontSize: 17,
-        color: 'black'
-    },
-    text2 : {
-        fontSize:14,
-        color:'black'
-    }
+  card:{
+    margin:10,
+    flex:1,
+    height:100,
+    backgroundColor: colors.header,
+    padding: 10,
+    borderWidth:2,
+    borderRadius:10,
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center'
+  },
+  textContainer: {
+    width:'70%',
+    flexDirection:'column',
+    justifyContent:'flex-start',
+  },
+  text: {
+    fontSize: 17,
+    color: 'black'
+  },
+  text2 : {
+    fontSize:14,
+    color:'black'
+  }
 })
