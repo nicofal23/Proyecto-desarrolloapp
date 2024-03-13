@@ -1,4 +1,3 @@
-//CategoryItem.jsx
 import { Pressable, StyleSheet, Text,View } from "react-native";
 import { useDispatch } from "react-redux";
 import { setCategorySelected } from "../features/shop/shopSlice";

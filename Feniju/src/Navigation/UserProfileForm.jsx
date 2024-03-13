@@ -15,8 +15,6 @@ const UserProfileForm = () => {
       phoneNumber: phoneNumber,
       address: address,
     };
-
-    // Dispatch de la acción para actualizar el perfil de usuario
     dispatch(updateUserProfile(userData));
   };
 
@@ -64,3 +62,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
 });
+ 

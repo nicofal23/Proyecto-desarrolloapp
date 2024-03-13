@@ -43,4 +43,4 @@ const styles =StyleSheet.create({
   menu:{
     backgroundColor: 'black',
   }
-})
+}) 

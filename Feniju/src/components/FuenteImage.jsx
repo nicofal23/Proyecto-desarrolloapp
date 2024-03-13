@@ -1,4 +1,3 @@
-//FuenteImage.jsx
 const getImageSource = (category) => {
     switch(category) {
         case "CHAPERIA":

@@ -9,7 +9,7 @@ const MyProfileTabIcon = ({ focused }) => {
   return (
     <View style={styles.tabContainer}>
       {profileImage ? (
-        <Image
+        <Image 
           source={{ uri: profileImage }} 
           style={styles.profileImage}
         />

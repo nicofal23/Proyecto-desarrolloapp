@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, Text, Pressable } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, FlatList, Text, Pressable, Alert } from 'react-native';
 import CartItem from '../components/CartItem';
 import { colors } from '../global/Colors';
 import { useSelector, useDispatch } from "react-redux";
 import { usePostOrderMutation } from '../services/shopService';
 import Toast from 'react-native-toast-message';
+import { clearCart as clearCartAction } from '../features/shop/cartSlice';
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartReducer.value.items);
   const total = useSelector((state) => state.cartReducer.value.total);
   const userEmail = useSelector((state) => state.authReducer.value.user); 
+  const dispatch = useDispatch();
   const [triggerPost, result] = usePostOrderMutation();
   const [isOrdering, setIsOrdering] = useState(false);
 
   const confirmCart = async () => {
     try {
       setIsOrdering(true);
-      const currentDate = new Date().toISOString(); // Obtiene la fecha actual en formato ISO
-      const order = { total, cartItems, user: userEmail, createdAt: currentDate }; // Agrega la fecha al objeto de orden
-      const response = await triggerPost(order); // Envía el objeto de orden
+      const currentDate = new Date().toISOString();
+      const order = { total, cartItems, user: userEmail, createdAt: currentDate };
+      const response = await triggerPost(order);
       setIsOrdering(false);
       if (response && response.data) {
         showToast('success', 'Orden enviada correctamente');
-        dispatch({ type: 'CLEAR_CART' });
+        Alert.alert(
+          'Orden enviada',
+          '¿Desea vaciar el carrito?',
+          [
+            { text: 'Sí', onPress: clearCart },
+            { text: 'No', style: 'cancel' }
+          ]
+        );
       } else {
         showToast('error', 'Error al enviar la orden');
       }
@@ -31,6 +39,10 @@ const Cart = () => {
       setIsOrdering(false);
       showToast('error', 'Error al enviar la orden');
     }
+  }
+
+  const clearCart = () => {
+    dispatch(clearCartAction());
   }
 
   const showToast = (type, message) => {
@@ -51,6 +63,7 @@ const Cart = () => {
             data={cartItems}
             renderItem={({ item }) => <CartItem item={item} />}
             keyExtractor={(cartItem) => cartItem.id}
+            clearCart={clearCart}
           />
           <View style={styles.card}>
             <View style={styles.textContainer}>
@@ -65,12 +78,16 @@ const Cart = () => {
         </>
       ) : (
         <View style={styles.noProductsContainer}>
-          <Text style={styles.noProductsText}>No hay productos agregados</Text>
+          <Text style={styles.noProductsText}>No hay productos agregados al carrito</Text>
         </View>
       )}
     </View>
   );
 };
+
+export default Cart;
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -106,4 +123,3 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Cart;

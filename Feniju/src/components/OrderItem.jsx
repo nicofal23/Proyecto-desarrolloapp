@@ -17,7 +17,7 @@ const OrderItem = () => {
         if (orders) {
             const formatted = Object.keys(orders).map(orderId => {
                 const order = orders[orderId];
-                const formattedDate = new Date(order.createdAt).toLocaleDateString('es-ES'); // Formatear la fecha
+                const formattedDate = new Date(order.createdAt).toLocaleDateString('es-ES');
                 return { ...order, formattedDate, id: orderId }; 
             });
             setFormattedOrders(formatted);

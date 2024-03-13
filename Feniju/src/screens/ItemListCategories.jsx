@@ -8,7 +8,7 @@ import { useGetProductsByCategoryQuery } from "../services/shopService";
 function ItemListCategories({ navigation }) {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const [isLoading, setIsLoading] = useState(true); // Agregar estado isLoading
+  const [isLoading, setIsLoading] = useState(true); 
 
   const category = useSelector((state) => state.shopReducer.value.categorySelected);
   const { data: productsFilteredByCategory, isLoading: dataIsLoading, error } = useGetProductsByCategoryQuery(category);
@@ -24,7 +24,6 @@ function ItemListCategories({ navigation }) {
   }, [productsFilteredByCategory, keyword]);
 
   useEffect(() => {
-    // Actualizar isLoading basado en dataIsLoading
     setIsLoading(dataIsLoading);
   }, [dataIsLoading]);
 

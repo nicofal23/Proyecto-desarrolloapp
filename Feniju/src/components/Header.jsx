@@ -1,4 +1,3 @@
-//Header.jsx
 import { View,  StyleSheet, Image, Text} from "react-native";
 import { colors } from '../global/Colors'
 import { LogoImage } from "./Logo";

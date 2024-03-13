@@ -47,13 +47,12 @@ export const authSlice = createSlice({
         },
       };
     },
-    // Nueva acción para actualizar el perfil de usuario
     updateUserProfile: (state, action) => {
       state.value = {
         ...state.value,
-        user: action.payload.name, // Actualiza el nombre de usuario
-        profileImage: action.payload.profileImage, // Actualiza la imagen de perfil
-        location: { // Actualiza la ubicación del usuario
+        user: action.payload.name, 
+        profileImage: action.payload.profileImage, 
+        location: { 
           latitude: action.payload.latitude,
           longitude: action.payload.longitude,
           address: action.payload.address,

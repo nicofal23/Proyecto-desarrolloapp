@@ -1,57 +1,81 @@
-//Categories.jsx
-import { View, StyleSheet, ImageBackground, FlatList } from "react-native";
-import getImageSource from './FuenteImage'
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, ImageBackground, FlatList, ActivityIndicator, Text } from 'react-native';
+import getImageSource from './FuenteImage';
 import CategoryItem from './CategoryItem';
-// import { useSelector } from "react-redux";
-import { useGetCategoriesQuery } from "../services/shopService";
-
+import { useGetCategoriesQuery } from '../services/shopService';
 
 function Categories({ navigation }) {
-    // const categories = useSelector((state) => state.shopReducer.value.categories);
-    const { data, isLoading, error } = useGetCategoriesQuery();
-    
-    return (
-        <View style={styles.contenedorcategories}>
-            <FlatList
-             data={data}
-             renderItem={({item})=>( 
-                <ImageBackground
-                source={getImageSource(item)}
-                style={styles.textBackground}
-            >
-                <CategoryItem navigation={navigation} category={item}/>
-            </ImageBackground>
-        )}
-             keyExtractor={(category) => category}
-            />
-        </View>
-    )}
-    
+  const [isLoading, setIsLoading] = useState(true);
+  const { data, error } = useGetCategoriesQuery();
 
-export default Categories;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="larges" color="#0000ff"/>
+        <Text>Cargandon...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <ImageBackground source={getImageSource(item)} style={styles.textBackground}>
+            <CategoryItem navigation={navigation} category={item} />
+          </ImageBackground>
+        )}
+        keyExtractor={(category) => category}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-    contenedorcategories: {
-        justifyContent: 'center',
-        marginTop: 30,
-        padding: 10,
-        alignContent: 'center',
-        marginRight: 10,
-        width:400
-        
-    },
-    textocategoria: {
-        alignItems: 'center',
-        borderRadius: 5,
-        height:80,
-        textAlign: 'center',
-        fontSize:50,
-        margin: 20,
-        color: 'white'
-    },
-    textBackground: {
-        margin:10,
-        borderRadius: 5,
-        overflow: 'hidden', // Asegura que la imagen no se salga del contenedor
-    }
+  container: {
+    justifyContent: 'center',
+    marginTop: 30,
+    padding: 10,
+    alignContent: 'center',
+    marginRight: 10,
+    width: 400,
+  },
+  textBackground: {
+    margin: 10,
+    borderRadius: 5,
+    overflow: 'hidden',
+  },
+  loadingContainer: {
+    marginTop: 200,
+    justifyContent: 'center',
+    alignItems: 'center', 
+  },
+  errorContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  errorText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'red',
+  },
 });
+
+export default Categories;

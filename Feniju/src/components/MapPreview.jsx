@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import { googleAPI } from "../firebase/googleAPI";
 
-const MapPreview = ({ location }) => {
+const MapPreview = ({ location}) => {
   const mapPreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=13&size=600x300&maptype=roadmap
     &markers=color:blue%7Clabel:S%7C${location.latitude},${location.longitude}
     &key=${googleAPI.mapStatic}`;

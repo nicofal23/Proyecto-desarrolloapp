@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
@@ -24,6 +24,22 @@ const MainNavigator = () => {
     }
   }, [data, location])
 
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <Text>Error al cargar</Text>
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>{user ? <TabNavigator /> : <AuthStack />}</NavigationContainer>
   );
@@ -31,4 +47,11 @@ const MainNavigator = () => {
 
 export default MainNavigator;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+

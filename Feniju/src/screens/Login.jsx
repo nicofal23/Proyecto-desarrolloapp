@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, ActivityIndicator } from "react-native";
+import { StyleSheet, Text, View, Pressable, ActivityIndicator, Alert } from "react-native";
 import React, { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
@@ -14,62 +14,75 @@ const Login = ({ navigation }) => {
     const [errorPassword, setErrorPassword] = useState("");
     const [triggerSignin, result] = useLoginMutation();
     const dispatch = useDispatch();
-  
-   
+    const [showAlert, setShowAlert] = useState(false); 
+
     useEffect(() => {
-      const userAuthenticated = false; 
-      if (userAuthenticated) {
-        navigation.replace("Home"); 
-      }
-    }, []);
-    useEffect(() => {
-      console.log(result);
-      if (result.data) {
-        dispatch(setUser(result.data));
-      }
-    }, [result]);
-  
-    const onSubmit = () => {
-      try {
-        loginSchema.validateSync({ password, email });
-        triggerSignin({ email, password });
-      } catch (err) {
-        switch (err.path) {
-          case "email":
-            setErrorMail(err.message);
-            break;
-          case "password":
-            setErrorPassword(err.message);
-            break;
-          default:
-            break;
+        const userAuthenticated = false;
+        if (userAuthenticated) {
+            navigation.replace("Home");
         }
-      }
+    }, []);
+
+    useEffect(() => {
+        console.log(result);
+        if (result.data) {
+            dispatch(setUser(result.data));
+        } else if (result.error) { 
+            setShowAlert(true); 
+        }
+    }, [result]);
+
+    const onSubmit = () => {
+        try {
+            loginSchema.validateSync({ password, email });
+            triggerSignin({ email, password });
+        } catch (err) {
+            switch (err.path) {
+                case "email":
+                    setErrorMail(err.message);
+                    break;
+                case "password":
+                    setErrorPassword(err.message);
+                    break;
+                default:
+                    break;
+            }
+            setShowAlert(true); 
+        }
     };
-  
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title} >Login</Text>
-      <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
-      <InputForm
-        label={"Password"}
-        error={errorPassword}
-        onChange={setPassword}
-        isSecure={true}
-      />
-      {result.isLoading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
-      ) : (
-        <SubmitButton title={"Ingresar"} onPress={onSubmit} />
-      )}
-      <View style={styles.contenedorText}>
-        <Text>No tienes cuenta?</Text>
-        <Pressable onPress={() => navigation.navigate("Register")}>
-            <Text style={styles.link}>REGISTRATE</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>Login</Text>
+            <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
+            <InputForm
+                label={"Password"}
+                error={errorPassword}
+                onChange={setPassword}
+                isSecure={true}
+            />
+            {result.isLoading ? (
+                <ActivityIndicator size="large" color="#0000ff" />
+            ) : (
+                <SubmitButton title={"Ingresar"} onPress={onSubmit} />
+            )}
+            <View style={styles.contenedorText}>
+                <Text>No tienes cuenta?</Text>
+                <Pressable onPress={() => navigation.navigate("Register")}>
+                    <Text style={styles.link}>REGISTRATE</Text>
+                </Pressable>
+            </View>
+            {showAlert && (
+                Alert.alert(
+                    "Usuario y/o contraseña incorrecto",
+                    "Por favor, verifica tus credenciales e intenta nuevamente.",
+                    [
+                        { text: "OK", onPress: () => setShowAlert(false) }
+                    ]
+                )
+            )}
+        </View>
+    );
 };
 
 export default Login;
@@ -85,9 +98,9 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 10,
-        marginTop:10,
-        justifyContent:'center',
-        textAlign:'center'
+        marginTop: 10,
+        justifyContent: 'center',
+        textAlign: 'center'
     },
     link: {
         color: 'blue',
@@ -95,10 +108,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     contenedorText: {
-      margin: 10,
-      alignItems:'center',
-      margin:20,
-  }
+        margin: 10,
+        alignItems: 'center',
+        margin: 20,
+    }
 });
-
-

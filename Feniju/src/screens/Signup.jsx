@@ -18,7 +18,7 @@ const Signup = ({navigation}) => {
 
   const dispatch = useDispatch();
 
-  //console.log(result)
+ 
 
   const onSubmit = () => {
     console.log("mail", errorMail);
@@ -26,7 +26,6 @@ const Signup = ({navigation}) => {
     console.log("confirmPassword", errorConfirmPassword);
 
     try {
-      //limpiamos los errores cada vez que ejecutamos el Register
       setErrorMail("");
       setErrorPassword("");
       setErrorConfirmPassword("");
@@ -118,3 +117,4 @@ const styles = StyleSheet.create({
         margin:20,
     }
 });
+ 

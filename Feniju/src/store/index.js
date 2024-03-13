@@ -12,7 +12,7 @@ export default configureStore({
     counterReducer,
     shopReducer,
     cartReducer,
-    authReducer,
+    authReducer, 
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },

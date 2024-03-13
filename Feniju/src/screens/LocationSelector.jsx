@@ -7,13 +7,15 @@ import { setUserLocation } from "../features/auth/authSlice";
 import { usePostUserLocationMutation } from "../services/shopService";
 import { colors } from "../global/Colors";
 
-const LocationSelector = () => {
+const LocationSelector = ({ navigation }) => {
   const [location, setLocation] = useState({ latitude: "", longitude: "" });
   const [error, setError] = useState(null); 
   const [address, setAddress] = useState(null);
+  const [resultMessage, setResultMessage] = useState(""); 
   const { localId } = useSelector((state) => state.authReducer.value);
   const [triggerPostAddress, result] = usePostUserLocationMutation();
   const dispatch = useDispatch();
+  const [showBackButton, setShowBackButton] = useState(false); 
 
   useEffect(() => {
     (async () => {
@@ -43,14 +45,24 @@ const LocationSelector = () => {
     })();
   }, [location]);
 
-  const onConfirmAddress = () => {
-    const locationFormatted = {
-      latitude: location.latitude,
-      longitude: location.longitude,
-      address: address,
-    };
-    dispatch(setUserLocation(locationFormatted));
-    triggerPostAddress({ localId, location: locationFormatted });
+  const onConfirmAddress = async () => {
+    try {
+      const locationFormatted = {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        address: address,
+      };
+      dispatch(setUserLocation(locationFormatted));
+      await triggerPostAddress({ localId, location: locationFormatted });
+      setResultMessage("La dirección se actualizó correctamente.");
+      setShowBackButton(true); 
+    } catch (error) {
+      setResultMessage("Hubo un error al actualizar la dirección.");
+    }
+  };
+
+  const onBackToProfile = () => {
+    navigation.navigate("My Profile"); 
   };
 
   return (
@@ -63,9 +75,16 @@ const LocationSelector = () => {
           </Text>
           <Text style={styles.address}>{address}</Text>
           <MapPreview location={location} />
-          <Pressable style={styles.button} onPress={onConfirmAddress}>
-            <Text style={styles.buttonText}>Confirmar Dirección</Text>
-          </Pressable>
+          {showBackButton ? (
+            <Pressable style={styles.button} onPress={onBackToProfile}>
+              <Text style={styles.buttonText}>Volver a mi perfil</Text>
+            </Pressable>
+          ) : (
+            <Pressable style={styles.button} onPress={onConfirmAddress}>
+              <Text style={styles.buttonText}>Confirmar Dirección</Text>
+            </Pressable>
+          )}
+          {resultMessage ? <Text style={styles.resultMessage}>{resultMessage}</Text> : null}
         </View>
       ) : (
         <Text style={styles.errorText}>{error}</Text>
@@ -118,6 +137,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  resultMessage: {
+    fontSize: 16,
+    color: "green",
+    marginTop: 10,
+  }, 
   errorText: {
     fontSize: 16,
     color: "red",

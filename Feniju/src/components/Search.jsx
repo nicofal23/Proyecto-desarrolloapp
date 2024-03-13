@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pressable, TextInput, View, StyleSheet, Text } from "react-native";
+import { Pressable, TextInput, View, StyleSheet  } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { Octicons } from '@expo/vector-icons';
 

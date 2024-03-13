@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { removeItem } from '../features/shop/cartSlice'; 
 import Toast from 'react-native-toast-message';
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, clearCart }) => {
   const dispatch = useDispatch(); 
 
   const handleRemoveItem = () => { 
@@ -18,6 +18,7 @@ const CartItem = ({ item }) => {
       visibilityTime: 1000,
     });
   };
+
   return (
     <View style={styles.card}>
       <View style={styles.textContainer}>
@@ -25,7 +26,9 @@ const CartItem = ({ item }) => {
         <Text style={styles.text2}>Precio: ${item.price}</Text>
         <Text style={styles.text2}>Cantidad: {item.quantity}</Text>
       </View>
-      <Pressable onPress={handleRemoveItem}>
+      <Pressable onPress={() => {
+        handleRemoveItem();
+      }}>
         <Ionicons name="trash-bin-outline" size={24} color="black" />
       </Pressable>
     </View>

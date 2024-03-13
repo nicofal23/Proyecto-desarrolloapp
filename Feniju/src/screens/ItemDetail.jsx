@@ -10,7 +10,7 @@ import Toast from 'react-native-toast-message';
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedQuantity, setSelectedQuantity] = useState(0);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const { id } = route.params;
   const dispatch = useDispatch();

@@ -13,12 +13,12 @@ const InputForm = ({ label, error, onChange, isSecure }) => {
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, error && styles.inputError]} 
         value={input}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
       />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
+      {error ? <Text style={styles.error}>{error}</Text> : null} 
     </View>
   );
 };
@@ -51,4 +51,3 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 });
-

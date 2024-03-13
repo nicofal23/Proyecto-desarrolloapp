@@ -27,4 +27,4 @@ export const shopSlice = createSlice({
 })
 
 export const {setCategorySelected, setProductIdSelected} = shopSlice.actions
-export default shopSlice.reducer
+export default shopSlice.reducer 

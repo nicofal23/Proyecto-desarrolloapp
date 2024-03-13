@@ -9,3 +9,4 @@ export const signupSchema = object().shape({
     .oneOf([ref("password"), null], "Las contraseñas no coinciden")
     .required(),
 });
+ 

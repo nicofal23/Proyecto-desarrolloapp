@@ -16,7 +16,7 @@ const ImageSelector = ({ navigation }) => {
     if (!granted) {
       return false;
     }
-    return true;
+    return true; 
   };
 
   const pickImage = async () => {

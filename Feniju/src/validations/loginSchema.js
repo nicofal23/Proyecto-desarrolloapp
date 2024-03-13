@@ -6,3 +6,4 @@ export const loginSchema = object().shape({
     .required("Contraseña requerida")
     .min(6, "Password must be at least 6 characters"),
 });
+ 

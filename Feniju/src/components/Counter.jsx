@@ -1,4 +1,3 @@
-// Counter.js
 import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +8,7 @@ const Counter = ({ stock, onChangeQuantity }) => {
   const dispatch = useDispatch();
 
   const decrementCount = () => {
-    if (count > 0) {
+    if (count > 1) {
       dispatch(decrement());
       onChangeQuantity(count - 1);
     }
@@ -24,7 +23,7 @@ const Counter = ({ stock, onChangeQuantity }) => {
 
   const resetCount = () => {
     dispatch(reset());
-    onChangeQuantity(0);
+    onChangeQuantity(1); 
   };
 
   return (

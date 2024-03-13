@@ -1,4 +1,3 @@
-// home.jsx
 import { View, StyleSheet, StatusBar } from "react-native";
 import Categories from "../components/Categories";
 import { LinearGradient } from 'expo-linear-gradient';

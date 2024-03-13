@@ -19,4 +19,4 @@ const MyProfileStack = () => {
   );
 };
 
-export default MyProfileStack;
+export default MyProfileStack; 
