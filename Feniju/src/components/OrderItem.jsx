@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native'; 
+import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useFocusEffect } from '@react-navigation/native'; 
+import { useFocusEffect, useNavigation } from '@react-navigation/native'; 
 import { colors } from '../global/Colors';
 import { useGetOrdersQuery } from '../services/shopService';
+import { useSelector } from 'react-redux';
 
 const OrderItem = () => {
+    const user = useSelector((state) => state.authReducer.value.user); 
     const { data: orders, error, isLoading, refetch } = useGetOrdersQuery(); 
     const [formattedOrders, setFormattedOrders] = useState([]);
+    const navigation = useNavigation(); // Obtiene el objeto de navegación
 
     useEffect(() => {
         refetch(); 
@@ -20,9 +23,13 @@ const OrderItem = () => {
                 const formattedDate = new Date(order.createdAt).toLocaleDateString('es-ES');
                 return { ...order, formattedDate, id: orderId }; 
             });
-            setFormattedOrders(formatted);
+
+            formatted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            const userOrders = formatted.filter(order => order.user === user);
+            setFormattedOrders(userOrders);
         }
-    }, [orders]);
+    }, [orders, user]);
 
     useFocusEffect(
         React.useCallback(() => {
@@ -42,6 +49,10 @@ const OrderItem = () => {
         return <Text>No hay órdenes disponibles</Text>;
     }
 
+    const handleOrderDetail = (order) => {
+        navigation.navigate('OrdersDetail', { orders: formattedOrders, selectedOrder: order }); 
+    };
+
     return (
         <FlatList 
             data={formattedOrders}
@@ -52,7 +63,9 @@ const OrderItem = () => {
                         <Text style={styles.text}>{item.formattedDate}</Text>
                         <Text style={styles.text2}>${item.total}</Text>
                     </View>
-                    <MaterialCommunityIcons name="details" size={24} color="black" />
+                    <Pressable onPress={() => handleOrderDetail(item)}>
+                        <MaterialCommunityIcons name="details" size={24} color="black" />
+                    </Pressable>
                 </View>
             )}
         />
