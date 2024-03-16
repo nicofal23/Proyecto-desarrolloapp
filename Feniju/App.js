@@ -5,6 +5,14 @@ import { Provider } from "react-redux";
 import store from './src/store';
 import Toast from 'react-native-toast-message';
 import MainNavigator from './src/Navigation/MainNavigator';
+import { init } from './src/db';
+
+init()
+  .then(()=> console.log("base de datos iniciada"))
+  .catch((err) => {
+    console.log("error")
+    console.log(err);
+  })
 
 const ForwardedToast = forwardRef((props, ref) => {
   return <Toast ref={ref} {...props} />;

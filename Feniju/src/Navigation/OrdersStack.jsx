@@ -10,11 +10,11 @@ const OrdersStack = () => {
             header: () => <Header title="ORDENES" />
         }
     }>
-        <Stack.Screen name="Orders" component={Orders} />
+        <Stack.Screen name="Orders" component={Orders.value.user} />
     </Stack.Navigator>
     );
 };
 
 
 
-export default OrdersStack; 
+export default OrdersStack;

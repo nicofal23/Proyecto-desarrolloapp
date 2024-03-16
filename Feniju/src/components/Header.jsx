@@ -1,19 +1,36 @@
-import { View,  StyleSheet, Image, Text} from "react-native";
+import { View,  StyleSheet, Image, Text, Pressable} from "react-native";
 import { colors } from '../global/Colors'
 import { LogoImage } from "./Logo";
 import { fonts } from '../global/fonts'
 import { useFonts } from "expo-font";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/auth/authSlice";
+import { deleteSession } from "../db";
 
 function Header ({title}) {
     const [fontsLoaded] = useFonts(fonts);
+    const { localId, user } = useSelector((state) => state.authReducer.value);
+    const dispatch = useDispatch();
+
+    const onLogout = async () => {
+    dispatch(logout());
+    const deletedSession = await deleteSession({ localId });
+    };
+
     return ( 
         <View style={styles.menu}> 
             <View>
                 <Image source={LogoImage} style={styles.logo}/>
             </View>
             <View style={styles.tituloconteiner}>
-                <Text style={styles.titulo}>{title}</Text>
-            </View>
+            <Text style={styles.titulo}>{title}</Text>
+            {user ? (
+                <Pressable style={styles.logoutIcon} onPress={onLogout}>
+                    <MaterialIcons name="logout" size={24} color="white"/>
+                </Pressable>
+            ) : null}
+        </View>
         </View>
     )
 }
@@ -38,10 +55,16 @@ const styles =StyleSheet.create({
         marginTop:20,
         marginBottom:20
     },
-    tituloconteiner:{
-        justifyContent:'end',
-        alignItems:'end',
-        textAlign:'end'
+    tituloconteiner: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingRight: 10,
+        marginLeft: 120,
+    },
+    
+    logoutIcon: {
+        marginLeft: 100,
     },
     logo: {
         marginTop:15,
