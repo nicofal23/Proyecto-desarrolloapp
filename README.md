@@ -25,7 +25,7 @@ Feniju es una aplicación móvil que facilita la compra de repuestos para vehíc
 
 2. **Navegación por Categorías:** Los usuarios pueden explorar los repuestos disponibles organizados por categorías, facilitando la búsqueda de productos específicos.
 
-<img src="https://imgbb.host/images/aLeS1.png" alt="captura 1" style= "width:600px">
+<img src="https://imgbb.host/images/aLeS1.png" alt="captura 1" style= "width:300px">
 
 3. **Carrito de Compras:** Los usuarios pueden agregar productos al carrito de compras y realizar acciones como eliminar elementos o actualizar cantidades.
 <img src="./assets/carpetaDelStorage.png" alt="captura 1" style= "width:600px">
