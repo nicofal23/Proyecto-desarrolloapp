@@ -62,13 +62,13 @@ const Signup = ({navigation}) => {
       <Text style={styles.title}>Registro</Text>
       <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
       <InputForm
-        label={"Password"}
+        label={"Contraseña"}
         error={errorPassword}
         onChange={setPassword}
         isSecure={true}
       />
       <InputForm
-        label={"Confirm password"}
+        label={"Confirmar contraseña"}
         error={errorConfirmPassword}
         onChange={setConfirmPassword}
         isSecure={true}

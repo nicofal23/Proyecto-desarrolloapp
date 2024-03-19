@@ -48,10 +48,9 @@ Feniju es una aplicación móvil que facilita la compra de repuestos para vehíc
 - **react-native-linear-gradient:** ^2.8.3
 - **react-native-safe-area-context:** 4.8.2
 - **react-native-screens:** ~3.29.0
-- **react-native-snap-carousel:** ^3.9.1
 - **react-native-toast-message:** ^2.2.0
 - **react-redux:** ^9.1.0
-- **yup:** ^1.4.0
+
 
 
 ## Contacto

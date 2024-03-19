@@ -25,7 +25,6 @@ const Login = ({ navigation }) => {
     }, []);
 
     useEffect(() => {
-        console.log(result);
         if (result.data) {
             dispatch(setUser(result.data));
             insertSession({
@@ -59,10 +58,10 @@ const Login = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
+            <Text style={styles.title}>Inicio Sesión</Text>
             <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
             <InputForm
-                label={"Password"}
+                label={"Contraseña"}
                 error={errorPassword}
                 onChange={setPassword}
                 isSecure={true}
