@@ -21,30 +21,28 @@ Feniju es una aplicación móvil que facilita la compra de repuestos para vehíc
 
 ## Funcionalidades Principales
 1. **Inicio de Sesión y Registro de Usuarios:** Los usuarios pueden registrarse en la aplicación o iniciar sesión si ya tienen una cuenta existente.
-<img src="https://imgbb.host/images/aLKtS.png" alt="captura 1" style= "width:300px">
+<img src="https://imgbb.host/images/aLKtS.png" alt="Inicio de Sesión" style= "width:300px">
 
 2. **Navegación por Categorías:** Los usuarios pueden explorar los repuestos disponibles organizados por categorías, facilitando la búsqueda de productos específicos.
 
-<img src="https://imgbb.host/images/aLeS1.png" alt="captura 1" style= "width:300px">
+<img src="https://imgbb.host/images/aLeS1.png" alt="Categorias" style= "width:300px">
 
 3. **Carrito de Compras:** Los usuarios pueden agregar productos al carrito de compras y realizar acciones como eliminar elementos o actualizar cantidades.
-<img src="https://imgbb.host/images/aLYoM.png" alt="captura 1" style= "width:300px">
+<img src="https://imgbb.host/images/aLYoM.png" alt="Carrito" style= "width:300px">
 
 4. **Envío de Órdenes de Compra:** Una vez que los usuarios han seleccionado los repuestos deseados, pueden enviar una orden de compra para procesar el pedido.
 
-<img src="./assets/carpetaDelStorage.png" alt="captura 1" style= "width:600px">
-
 5. **Revisión de Órdenes Anteriores:** Los usuarios pueden acceder a su historial de órdenes anteriores para consultar detalles y realizar un seguimiento del estado de entrega.
 
-<img src="./assets/carpetaDelStorage.png" alt="captura 1" style= "width:600px">
+<img src="https://i.ibb.co/cXszB29/ordenes.png" alt="Ordenes" style= "width:300px">
 
 6. **Localización con Google Maps:** La aplicación ofrece la capacidad de localización utilizando Google Maps, lo que permite a los usuarios encontrar ubicaciones físicas de tiendas o centros de distribución.
 
-<img src="./assets/carpetaDelStorage.png" alt="captura 1" style= "width:600px">
+<img src="https://i.ibb.co/MS863Bt/localizacion.png" alt="Google Maps" style= "width:300px">
 
 7. **Personalización de Perfil:** Los usuarios pueden personalizar su perfil cargando una foto de perfil.
 
-<img src="./assets/carpetaDelStorage.png" alt="captura 1" style= "width:600px">
+<img src="https://i.ibb.co/9b8qbGd/perfil.png" alt="Perfil" style= "width:300px">
 
 ## Dependencias Principales
 - **@expo/metro-runtime:** 3.1.1
