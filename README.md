@@ -53,17 +53,9 @@ Feniju es una aplicación móvil que facilita la compra de repuestos para vehíc
 - **react-redux:** ^9.1.0
 - **yup:** ^1.4.0
 
-## Contribución
-Si deseas contribuir al desarrollo de Feniju, ¡te damos la bienvenida! Por favor, sigue estas instrucciones:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tu contribución: `git checkout -b feature/nueva-funcionalidad`.
-3. Haz tus cambios y realiza commits significativos.
-4. Sube tus cambios a tu repositorio: `git push origin feature/nueva-funcionalidad`.
-5. Crea un Pull Request detallando tus cambios.
 
 ## Contacto
-Si tienes alguna pregunta o sugerencia sobre Feniju, no dudes en ponerte en contacto con nosotros en [correo electrónico] o a través de nuestras redes sociales.
+Si tienes alguna pregunta o sugerencia sobre Feniju, no dudes en ponerte en contacto con nosotros en falciglionicolas@gmail.com 
 
 ¡Gracias por utilizar Feniju!
 
