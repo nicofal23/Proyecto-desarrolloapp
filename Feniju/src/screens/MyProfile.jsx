@@ -1,25 +1,20 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View, Image } from "react-native";
 import { useSelector } from "react-redux";
+import { Entypo } from '@expo/vector-icons';
 
 const MyProfile = ({ navigation }) => {
   const { profileImage, imageCamera } = useSelector((state) => state.authReducer.value);
 
   return (
     <View style={styles.container}>
-      {profileImage || imageCamera ? (
+      {(profileImage || imageCamera) ? (
         <Image
           source={{ uri: profileImage || imageCamera }}
           resizeMode="cover"
           style={styles.image}
         />
       ) : (
-        <>
-          <Image
-            source={require("../../assets/defaultprofile.png")}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        </>
+        <Entypo name="user" size={100} color="black" /> // Aquí está el cambio
       )}
       <Pressable
         style={styles.button}
@@ -68,4 +63,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
- 

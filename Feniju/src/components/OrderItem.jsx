@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native'; 
+import { StyleSheet, Text, View, FlatList, Pressable, ActivityIndicator } from 'react-native'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFocusEffect, useNavigation } from '@react-navigation/native'; 
 import { colors } from '../global/Colors';
@@ -10,7 +10,7 @@ const OrderItem = () => {
     const user = useSelector((state) => state.authReducer.value.user); 
     const { data: orders, error, isLoading, refetch } = useGetOrdersQuery(); 
     const [formattedOrders, setFormattedOrders] = useState([]);
-    const navigation = useNavigation(); // Obtiene el objeto de navegación
+    const navigation = useNavigation(); 
 
     useEffect(() => {
         refetch(); 
@@ -38,15 +38,19 @@ const OrderItem = () => {
     );
 
     if (isLoading) {
-        return <Text>Loading...</Text>;
+        return <ActivityIndicator style={styles.loader} size="large" color={colors.primary} />;
     }
     
     if (error) {
-        return <Text>Error: {error.message}</Text>;
+        return <Text style={styles.errorText}>Error: {error.message}</Text>;
     }
     
     if (!formattedOrders || formattedOrders.length === 0) {
-        return <Text>No hay órdenes disponibles</Text>;
+        return (
+            <View style={styles.noProductsContainer}>
+                <Text style={styles.noProductsText}>No hay órdenes disponibles</Text>
+            </View>
+        );
     }
 
     const handleOrderDetail = (order) => {
@@ -99,6 +103,25 @@ const styles = StyleSheet.create({
         fontSize: 19,
         color: 'black',
     },
+    noProductsContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    noProductsText: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    loader: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    errorText: {
+        fontSize: 18,
+        color: 'red',
+        textAlign: 'center'
+    }
 });
 
 export default OrderItem;

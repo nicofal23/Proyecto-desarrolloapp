@@ -7,13 +7,14 @@ const Stack = createNativeStackNavigator()
 
 const AuthStack = () =>{
     return (
-        <Stack.Navigator initialRouteName="Login"
-        screenOptions={{header: ()=> <Header title="Bienvenidos!"/>}}>
+        <Stack.Navigator 
+            initialRouteName="Login"
+            screenOptions={{ header: () => <Header title="Bienvenidos!" isLoginPage={true} /> }}
+        >
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="Register" component={Singup}/>
         </Stack.Navigator>
     )
 }
 
-
-export default AuthStack 
+export default AuthStack

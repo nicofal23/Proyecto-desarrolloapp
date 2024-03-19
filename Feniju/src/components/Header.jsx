@@ -8,29 +8,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import { deleteSession } from "../db";
 
-function Header ({title}) {
+function Header({ title, isLoginPage }) { // Agrega isLoginPage como una prop
     const [fontsLoaded] = useFonts(fonts);
     const { localId, user } = useSelector((state) => state.authReducer.value);
     const dispatch = useDispatch();
 
     const onLogout = async () => {
-    dispatch(logout());
-    const deletedSession = await deleteSession({ localId });
+        dispatch(logout());
+        const deletedSession = await deleteSession({ localId });
     };
 
-    return ( 
-        <View style={styles.menu}> 
+    return (
+        <View style={styles.menu}>
             <View>
-                <Image source={LogoImage} style={styles.logo}/>
+                <Image source={LogoImage} style={styles.logo} />
             </View>
-            <View style={styles.tituloconteiner}>
-            <Text style={styles.titulo}>{title}</Text>
-            {user ? (
-                <Pressable style={styles.logoutIcon} onPress={onLogout}>
-                    <MaterialIcons name="logout" size={24} color="white"/>
-                </Pressable>
-            ) : null}
-        </View>
+            <View style={[styles.tituloconteiner, isLoginPage ? { marginLeft: 0 } : null]}>
+                <Text style={styles.titulo}>{title}</Text>
+                {user ? (
+                    <Pressable style={styles.logoutIcon} onPress={onLogout}>
+                        <MaterialIcons name="logout" size={24} color="white" />
+                    </Pressable>
+                ) : null}
+            </View>
         </View>
     )
 }

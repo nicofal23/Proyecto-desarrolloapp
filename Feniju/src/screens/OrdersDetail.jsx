@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native'; 
-import { useSelector } from 'react-redux';
+
 
 const OrdersDetail = ({ route }) => {
     const { orders, selectedOrder } = route.params;

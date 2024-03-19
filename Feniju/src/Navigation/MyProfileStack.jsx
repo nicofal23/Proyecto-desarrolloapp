@@ -7,16 +7,16 @@ import LocationSelector from "../screens/LocationSelector";
 const Stack = createNativeStackNavigator();
 
 const MyProfileStack = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="My Profile"
-      screenOptions={{ header: () => <Header title="My Profile" /> }}
-    >
-      <Stack.Screen name="My Profile" component={MyProfile} />
-      <Stack.Screen name="Image Selector" component={ImageSelector} />
-      <Stack.Screen name="Location Selector" component={LocationSelector} />
-    </Stack.Navigator>
-  );
+    return (
+        <Stack.Navigator
+            initialRouteName="My Profile"
+            screenOptions={{ header: () => <Header title="Mi Perfil" isLoginPage={false} /> }}
+        >
+            <Stack.Screen name="My Profile" component={MyProfile} />
+            <Stack.Screen name="Image Selector" component={ImageSelector} />
+            <Stack.Screen name="Location Selector" component={LocationSelector} />
+        </Stack.Navigator>
+    );
 };
 
-export default MyProfileStack; 
+export default MyProfileStack;

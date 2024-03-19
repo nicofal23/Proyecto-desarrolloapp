@@ -15,7 +15,7 @@ const Login = ({ navigation }) => {
     const [errorPassword, setErrorPassword] = useState("");
     const [triggerSignin, result] = useLoginMutation();
     const dispatch = useDispatch();
-    const [showAlert, setShowAlert] = useState(false); 
+    const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
         const userAuthenticated = false;

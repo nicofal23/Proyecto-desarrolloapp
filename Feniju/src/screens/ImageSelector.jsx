@@ -50,7 +50,7 @@ const ImageSelector = ({ navigation }) => {
           <Pressable style={styles.button} onPress={pickImage}>
             <Text style={styles.buttonText}>Tomar otra foto</Text>
           </Pressable>
-          <Pressable style={styles.button} onPress={confirmImage}>
+          <Pressable style={[styles.button, styles.confirmButton]} onPress={confirmImage}>
             <Text style={styles.buttonText}>Confirmar foto</Text>
           </Pressable>
         </>
@@ -73,11 +73,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#f0f0f0",
   },
   image: {
     width: 200,
     height: 200,
     marginBottom: 20,
+    borderRadius: 10,
   },
   noPhotoContainer: {
     width: 200,
@@ -86,6 +88,9 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#fff",
+    borderColor: "lightgray",
+    borderRadius: 10,
   },
   noPhotoText: {
     fontSize: 16,
@@ -96,6 +101,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
+    width: 150,
+  },
+  confirmButton: {
+    backgroundColor: 'green',
   },
   buttonText: {
     color: 'white',
