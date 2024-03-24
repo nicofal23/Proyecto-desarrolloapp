@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux'; 
 import { removeItem } from '../features/shop/cartSlice'; 
 import Toast from 'react-native-toast-message';
+import StyledText from '../styledComponents/StyledText';
 
 const CartItem = ({ item, clearCart }) => {
   const dispatch = useDispatch(); 
@@ -22,9 +23,9 @@ const CartItem = ({ item, clearCart }) => {
   return (
     <View style={styles.card}>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>Nombre: {item.title}</Text>
-        <Text style={styles.text2}>Precio: ${item.price}</Text>
-        <Text style={styles.text2}>Cantidad: {item.quantity}</Text>
+        <StyledText>Nombre: {item.title}</StyledText>
+        <StyledText>Precio: ${item.price}</StyledText>
+        <StyledText>Cantidad: {item.quantity}</StyledText>
       </View>
       <Pressable onPress={() => {
         handleRemoveItem();
@@ -55,12 +56,4 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     justifyContent:'flex-start',
   },
-  text: {
-    fontSize: 17,
-    color: 'black'
-  },
-  text2 : {
-    fontSize:14,
-    color:'black'
-  }
 })

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList, Text, Pressable, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, FlatList, Pressable, Alert } from 'react-native';
 import CartItem from '../components/CartItem';
 import { colors } from '../global/Colors';
 import { useSelector, useDispatch } from "react-redux";
 import { usePostOrderMutation } from '../services/shopService';
 import Toast from 'react-native-toast-message';
 import { clearCart as clearCartAction } from '../features/shop/cartSlice';
+import StyledText from '../styledComponents/StyledText';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cartReducer.value.items);
@@ -67,18 +68,18 @@ const Cart = () => {
           />
           <View style={styles.card}>
             <View style={styles.textContainer}>
-              <Text style={styles.text}>Total: ${total}</Text>
+              <StyledText text>Total: ${total}</StyledText>
             </View>
             <View>
               <Pressable onPress={confirmCart} disabled={isOrdering}>
-                <Text>Enviar Orden</Text>
+                <StyledText>Enviar Orden</StyledText>
               </Pressable>
             </View>
           </View>
         </>
       ) : (
         <View style={styles.noProductsContainer}>
-          <Text style={styles.noProductsText}>No hay productos agregados al carrito</Text>
+          <StyledText text>No hay productos agregados al carrito</StyledText>
         </View>
       )}
     </View>
@@ -108,18 +109,10 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1
   },
-  text: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
   noProductsContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  noProductsText: {
-    fontSize: 18,
-    fontWeight: 'bold'
-  }
 });
 

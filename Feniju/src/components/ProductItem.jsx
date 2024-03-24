@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Image, Pressable, StyleSheet, Text, useWindowDimensions } from "react-native";
 import Card from "./Card";
+import StyledText from "../styledComponents/StyledText";
 
 const ProductItem = ({ product, navigation }) => {
   const [isPortrait, setIsPortrait] = useState(true);
@@ -24,8 +25,8 @@ const ProductItem = ({ product, navigation }) => {
       <Pressable onPress={() => navigation.navigate("ItemDetail", {id: product.id})}>
         <Card style={styles.card}>
           <View>
-            <Text style={width < 400 ? styles.textMin : styles.text}>{product.title}</Text>
-            <Text style={styles.precio}>${product.price}</Text>
+            <StyledText>{product.title}</StyledText>
+            <StyledText font text>${product.price}</StyledText>
           </View>
           <Image style={styles.image} source={{ uri: product.images[0] }} />
         </Card>
@@ -37,10 +38,6 @@ const ProductItem = ({ product, navigation }) => {
 export default ProductItem;
 
 const styles = StyleSheet.create({
-  precio: {
-    fontSize:20,
-    fontWeight: 'bold',
-  },
   contenedor:{
     justifyContent: 'center',
     alignItems: 'center',
@@ -54,19 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor:'#93a7de',
     width: '90%',
     padding:10,
-  },
-  text: {
-    fontSize: 20,
-    width: "70%",
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
-    color: "black",
-    fontFamily: 'FontWeb',
-  },
-  textMin: {
-    fontSize: 14,
-    width: "70%",
   },
   image: {
     width: 70,

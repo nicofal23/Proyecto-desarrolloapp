@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import MapPreview from "../components/MapPreview";
+import { googleAPI } from "../firebase/googleAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../features/auth/authSlice";
 import { usePostUserLocationMutation } from "../services/shopService";
-import { colors } from "../global/Colors";
+import StyledText from "../styledComponents/StyledText";
 
-const LocationSelector = ({ navigation }) => {
+const LocationSelector = () => {
   const [location, setLocation] = useState({ latitude: "", longitude: "" });
-  const [error, setError] = useState(null); 
+  const [error, setError] = useState(null);
   const [address, setAddress] = useState(null);
-  const [resultMessage, setResultMessage] = useState(""); 
   const { localId } = useSelector((state) => state.authReducer.value);
   const [triggerPostAddress, result] = usePostUserLocationMutation();
+
   const dispatch = useDispatch();
-  const [showBackButton, setShowBackButton] = useState(false); 
 
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setError("El permiso para obtener la locación fue denegado");
+        setError("Permission to access location was denied");
         return;
       }
       let location = await Location.getCurrentPositionAsync();
@@ -45,55 +45,41 @@ const LocationSelector = ({ navigation }) => {
     })();
   }, [location]);
 
-  const onConfirmAddress = async () => {
-    try {
-      const locationFormatted = {
-        latitude: location.latitude,
-        longitude: location.longitude,
-        address: address,
-      };
-      dispatch(setUserLocation(locationFormatted));
-      await triggerPostAddress({ localId, location: locationFormatted });
-      setResultMessage("La dirección se actualizó correctamente.");
-      setShowBackButton(true); 
-    } catch (error) {
-      setResultMessage("Hubo un error al actualizar la dirección.");
-    }
-  };
+  const onConfirmAddress = () => {
+    console.log(address);
+    const locationFormatted = {
+      latitude: location.latitude,
+      longitude: location.longitude,
+      address: address,
+    };
+    dispatch(setUserLocation(locationFormatted));
 
-  const onBackToProfile = () => {
-    navigation.navigate("My Profile"); 
+    triggerPostAddress({localId, location: locationFormatted});
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mi dirección</Text>
+      <StyledText title label>Mi Dirección</StyledText>
       {location.latitude ? (
         <View style={styles.noLocationContainer}>
-          <Text style={styles.coordinates}>
-            Latitud: {location.latitude}, Longitud: {location.longitude}
-          </Text>
-          <Text style={styles.address}>{address}</Text>
+          <StyledText font label>
+            Lat: {location.latitude}, long: {location.longitude}
+          </StyledText>
           <MapPreview location={location} />
-          {showBackButton ? (
-            <Pressable style={styles.button} onPress={onBackToProfile}>
-              <Text style={styles.buttonText}>Volver a mi perfil</Text>
-            </Pressable>
-          ) : (
-            <Pressable style={styles.button} onPress={onConfirmAddress}>
-              <Text style={styles.buttonText}>Confirmar Dirección</Text>
-            </Pressable>
-          )}
-          {resultMessage ? <Text style={styles.resultMessage}>{resultMessage}</Text> : null}
+          <StyledText font label>{address}</StyledText>
+          <Pressable style={styles.button} onPress={onConfirmAddress}>
+            <StyledText text white>Confirmar Dirección</StyledText>
+          </Pressable>
         </View>
       ) : (
-        <Text style={styles.errorText}>{error}</Text>
+        <StyledText erroColor>{error}</StyledText>
       )}
     </View>
   );
 };
 
 export default LocationSelector;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -102,27 +88,12 @@ const styles = StyleSheet.create({
     paddingBottom: 130,
     paddingTop: 40,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: colors.primary,
-  },
   noLocationContainer: {
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
   },
-  coordinates: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  address: {
-    fontSize: 16,
-    textAlign: "center",
-    marginVertical: 10,
-    color: 'blue'
-  },
+
   button: {
     width: "80%",
     elevation: 8,
@@ -131,19 +102,5 @@ const styles = StyleSheet.create({
     padding: 14,
     marginTop: 20,
   },
-  buttonText: {
-    fontSize: 16,
-    color: "#fff",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  resultMessage: {
-    fontSize: 16,
-    color: "green",
-    marginTop: 10,
-  }, 
-  errorText: {
-    fontSize: 16,
-    color: "red",
-  },
+
 });

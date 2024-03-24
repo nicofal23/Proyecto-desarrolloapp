@@ -7,8 +7,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import { deleteSession } from "../db";
+import StyledText from "../styledComponents/StyledText";
 
-function Header({ title, isLoginPage }) { // Agrega isLoginPage como una prop
+function Header({ title, isLoginPage }) {
     const [fontsLoaded] = useFonts(fonts);
     const { localId, user } = useSelector((state) => state.authReducer.value);
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function Header({ title, isLoginPage }) { // Agrega isLoginPage como una prop
                 <Image source={LogoImage} style={styles.logo} />
             </View>
             <View style={[styles.tituloconteiner, isLoginPage ? { marginLeft: 0 } : null]}>
-                <Text style={styles.titulo}>{title}</Text>
+                <StyledText title>{title}</StyledText>
                 {user ? (
                     <Pressable style={styles.logoutIcon} onPress={onLogout}>
                         <MaterialIcons name="logout" size={24} color="white" />

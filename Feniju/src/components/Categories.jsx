@@ -3,6 +3,7 @@ import { View, StyleSheet, ImageBackground, FlatList, ActivityIndicator, Text } 
 import getImageSource from './FuenteImage';
 import CategoryItem from './CategoryItem';
 import { useGetCategoriesQuery } from '../services/shopService';
+import StyledText from '../styledComponents/StyledText';
 
 function Categories({ navigation }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ function Categories({ navigation }) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="larges" color="#0000ff"/>
-        <Text>Cargandon...</Text>
+        <StyledText>Cargandon...</StyledText>
       </View>
     );
   }
@@ -28,7 +29,7 @@ function Categories({ navigation }) {
   if (error) {
     return (
       <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Error: {error.message}</Text>
+        <StyledText errorColor>Error: {error.message}</StyledText>
       </View>
     );
   }
@@ -70,11 +71,6 @@ const styles = StyleSheet.create({
   errorContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  errorText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: 'red',
   },
 });
 

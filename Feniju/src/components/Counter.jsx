@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment, reset } from '../features/counter/counterSlice';
+import StyledText from '../styledComponents/StyledText';
 
 const Counter = ({ stock, onChangeQuantity }) => {
   const count = useSelector((state) => state.counterReducer.value);
@@ -29,14 +30,14 @@ const Counter = ({ stock, onChangeQuantity }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={decrementCount} style={styles.button}>
-        <Text style={styles.buttonText}>-</Text>
+        <StyledText font text>-</StyledText>
       </Pressable>
-      <Text style={styles.counterText}>{count}</Text>
+      <StyledText font>{count}</StyledText>
       <Pressable onPress={incrementCount} style={styles.button}>
-        <Text style={styles.buttonText}>+</Text>
+        <StyledText font text>+</StyledText>
       </Pressable>
       <Pressable onPress={resetCount} style={styles.button}>
-        <Text style={styles.buttonText}>x</Text>
+        <StyledText font text >x</StyledText>
       </Pressable>
     </View>
   );
@@ -57,14 +58,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginLeft: 10,
     marginRight: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  counterText: {
-    fontSize: 20,
-    fontWeight: 'bold',
   },
 });

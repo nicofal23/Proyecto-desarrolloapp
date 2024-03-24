@@ -4,6 +4,7 @@ import * as ImagePicker from "expo-image-picker";
 import { useDispatch, useSelector } from "react-redux";
 import { setCameraImage } from "../features/auth/authSlice";
 import { usePostProfileImageMutation } from "../services/shopService";
+import StyledText from "../styledComponents/StyledText";
 
 const ImageSelector = ({ navigation }) => {
   const [image, setImage] = useState(null);
@@ -48,7 +49,7 @@ const ImageSelector = ({ navigation }) => {
         <>
           <Image source={{ uri: image }} style={styles.image} />
           <Pressable style={styles.button} onPress={pickImage}>
-            <Text style={styles.buttonText}>Tomar otra foto</Text>
+            <StyledText link white font>Tomar otra foto</StyledText>
           </Pressable>
           <Pressable style={[styles.button, styles.confirmButton]} onPress={confirmImage}>
             <Text style={styles.buttonText}>Confirmar foto</Text>

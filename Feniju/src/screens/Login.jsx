@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, ActivityIndicator, Alert } from "react-native";
+import { StyleSheet, Text, View, Pressable, ActivityIndicator, Alert, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
 import { loginSchema } from "../validations/loginSchema";
 import { insertSession } from "../db/";
+import StyledText from "../styledComponents/StyledText";
 
 const Login = ({ navigation }) => {
     const [email, setEmail] = useState("");
@@ -57,60 +58,52 @@ const Login = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Inicio Sesión</Text>
-            <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
-            <InputForm
-                label={"Contraseña"}
-                error={errorPassword}
-                onChange={setPassword}
-                isSecure={true}
-            />
-            {result.isLoading ? (
-                <ActivityIndicator size="large" color="#0000ff" />
-            ) : (
-                <SubmitButton title={"Ingresar"} onPress={onSubmit} />
-            )}
-            <View style={styles.contenedorText}>
-                <Text>No tienes cuenta?</Text>
-                <Pressable onPress={() => navigation.navigate("Register")}>
-                    <Text style={styles.link}>REGISTRATE</Text>
-                </Pressable>
+        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            <View style={styles.container}>
+                <StyledText title >Inicio Sesión</StyledText>
+                <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
+                <InputForm
+                    label={"Contraseña"}
+                    error={errorPassword}
+                    onChange={setPassword}
+                    isSecure={true}
+                />
+                {result.isLoading ? (
+                    <ActivityIndicator size="large" color="#0000ff" />
+                ) : (
+                    <SubmitButton title={"Ingresar"} onPress={onSubmit} />
+                )}
+                <View style={styles.contenedorText}>
+                    <StyledText>¿No tienes cuenta?</StyledText>
+                    <Pressable onPress={() => navigation.navigate("Register")}>
+                        <StyledText link>REGISTRATE</StyledText>
+                    </Pressable>
+                </View>
+                {showAlert && (
+                    Alert.alert(
+                        "Usuario y/o contraseña incorrecto",
+                        "Por favor, verifica tus credenciales e intenta nuevamente.",
+                        [
+                            { text: "OK", onPress: () => setShowAlert(false) }
+                        ]
+                    )
+                )}
             </View>
-            {showAlert && (
-                Alert.alert(
-                    "Usuario y/o contraseña incorrecto",
-                    "Por favor, verifica tus credenciales e intenta nuevamente.",
-                    [
-                        { text: "OK", onPress: () => setShowAlert(false) }
-                    ]
-                )
-            )}
-        </View>
+        </ScrollView>
     );
 };
 
 export default Login;
 
 const styles = StyleSheet.create({
+        scrollViewContainer: {
+        flexGrow: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
         paddingHorizontal: 20,
         backgroundColor: '#fff',
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        marginTop: 10,
-        justifyContent: 'center',
-        textAlign: 'center'
-    },
-    link: {
-        color: 'blue',
-        fontSize: 16,
-        textAlign: 'center',
     },
     contenedorText: {
         margin: 10,

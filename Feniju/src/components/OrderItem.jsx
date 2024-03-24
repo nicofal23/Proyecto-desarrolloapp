@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Pressable, ActivityIndicator } from 'react-native'; 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { StyleSheet,View, FlatList, Pressable, ActivityIndicator } from 'react-native'; 
+import { Octicons } from '@expo/vector-icons';
 import { useFocusEffect, useNavigation } from '@react-navigation/native'; 
 import { colors } from '../global/Colors';
 import { useGetOrdersQuery } from '../services/shopService';
 import { useSelector } from 'react-redux';
+import StyledText from '../styledComponents/StyledText';
 
 const OrderItem = () => {
     const user = useSelector((state) => state.authReducer.value.user); 
@@ -42,13 +43,13 @@ const OrderItem = () => {
     }
     
     if (error) {
-        return <Text style={styles.errorText}>Error: {error.message}</Text>;
+        return <StyledText errorColor >Error: {error.message}</StyledText>;
     }
     
     if (!formattedOrders || formattedOrders.length === 0) {
         return (
             <View style={styles.noProductsContainer}>
-                <Text style={styles.noProductsText}>No hay órdenes disponibles</Text>
+                <StyledText font text>No hay órdenes disponibles</StyledText>
             </View>
         );
     }
@@ -64,11 +65,11 @@ const OrderItem = () => {
             renderItem={({ item }) => (
                 <View style={styles.card}>
                     <View style={styles.textContainer}>
-                        <Text style={styles.text}>{item.formattedDate}</Text>
-                        <Text style={styles.text2}>${item.total}</Text>
+                        <StyledText text>{item.formattedDate}</StyledText>
+                        <StyledText font text>${item.total}</StyledText>
                     </View>
                     <Pressable onPress={() => handleOrderDetail(item)}>
-                        <MaterialCommunityIcons name="details" size={24} color="black" />
+                        <Octicons name="info" size={24} color="black" />
                     </Pressable>
                 </View>
             )}
@@ -95,33 +96,16 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
     },
-    text: {
-        fontSize: 17,
-        color: 'black',
-    },
-    text2: {
-        fontSize: 19,
-        color: 'black',
-    },
     noProductsContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    },
-    noProductsText: {
-        fontSize: 18,
-        fontWeight: 'bold'
     },
     loader: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    errorText: {
-        fontSize: 18,
-        color: 'red',
-        textAlign: 'center'
-    }
 });
 
 export default OrderItem;

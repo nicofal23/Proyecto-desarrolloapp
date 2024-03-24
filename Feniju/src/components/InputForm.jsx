@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
+import StyledText from "../styledComponents/StyledText";
 
 const InputForm = ({ label, error, onChange, isSecure }) => {
   const [input, setInput] = useState("");
@@ -11,14 +12,14 @@ const InputForm = ({ label, error, onChange, isSecure }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
+      <StyledText label>{label}</StyledText>
       <TextInput
         style={[styles.input, error && styles.inputError]} 
         value={input}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
       />
-      {error ? <Text style={styles.error}>{error}</Text> : null} 
+      {error ? <StyledText errorColor >{error}</StyledText> : null} 
     </View>
   );
 };

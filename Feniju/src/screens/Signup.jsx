@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View,ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import { useSignUpMutation } from "../services/authService";
@@ -58,6 +58,7 @@ const Signup = ({navigation}) => {
   }, [result]);
 
   return (
+    <ScrollView contentContainerStyle={styles.scrollViewContainer}>
     <View style={styles.container}>
       <Text style={styles.title}>Registro</Text>
       <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
@@ -81,6 +82,7 @@ const Signup = ({navigation}) => {
         </Pressable>
       </View>
     </View>
+    </ScrollView>
   );
 };
 
@@ -88,6 +90,9 @@ export default Signup;
 
 
 const styles = StyleSheet.create({
+      scrollViewContainer: {
+      flexGrow: 1,
+    },
     container: {
         flex: 1,
         justifyContent: 'center',

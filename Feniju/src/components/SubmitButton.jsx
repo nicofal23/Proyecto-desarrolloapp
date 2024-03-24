@@ -1,11 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import StyledText from "../styledComponents/StyledText";
 
 const SubmitButton = ({ onPress, title }) => {
   return (
     <View style={styles.container}>
       <Pressable onPress={onPress} style={styles.button}>
-        <Text style={styles.text}>{title}</Text>
+        <StyledText font white>{title}</StyledText>
       </Pressable>
     </View>
   );
@@ -26,10 +27,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 8,
     width: "50%",
-  },
-  text: {
-    color: "white",
-    fontSize: 22,
   },
 });
  

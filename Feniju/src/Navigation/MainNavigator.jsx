@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetProfileImageQuery, useGetUserLocationQuery } from "../services/shopService";
 import { setProfileImage, setUserLocation,setUser } from "../features/auth/authSlice";
 import { fetchSession } from "../db";
+import StyledText from "../styledComponents/StyledText";
 
 const MainNavigator = () => {
   const {user, localId} = useSelector(state => state.authReducer.value)
@@ -50,7 +51,7 @@ const MainNavigator = () => {
   if (error) {
     return (
       <View style={styles.container}>
-        <Text>Error al cargar</Text>
+        <StyledText errorColor>Error al cargar</StyledText>
       </View>
     );
   }

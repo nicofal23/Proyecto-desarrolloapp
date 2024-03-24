@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text,View } from "react-native";
 import { useDispatch } from "react-redux";
 import { setCategorySelected } from "../features/shop/shopSlice";
+import StyledText from "../styledComponents/StyledText";
 
 
 
@@ -15,7 +16,7 @@ const CategoryItem = ({ category, navigation }) => {
         navigation.navigate("ItemListCategories", { category });
       }}
     >
-        <Text style={styles.text}>{category}</Text>
+        <StyledText textCategori white>{category}</StyledText>
       </Pressable>
     </View>
   );
@@ -32,10 +33,4 @@ const styles = StyleSheet.create({
         alignItems:'center',
         alignContent:'center',
     },
-  text: {
-    fontSize: 45,
-    fontFamily: 'FontWeb',
-    color: 'white',
-  },
- 
 });
