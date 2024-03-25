@@ -1,6 +1,5 @@
-// Componente Orders.js
 import React from 'react';
-import { StyleSheet, View } from 'react-native'; // Importa ScrollView
+import { StyleSheet, View } from 'react-native';
 import OrderItem from '../components/OrderItem';
 
 const Orders = () => {

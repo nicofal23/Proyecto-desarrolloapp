@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as Location from "expo-location";
 import MapPreview from "../components/MapPreview";
@@ -46,7 +46,6 @@ const LocationSelector = () => {
   }, [location]);
 
   const onConfirmAddress = () => {
-    console.log(address);
     const locationFormatted = {
       latitude: location.latitude,
       longitude: location.longitude,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, ActivityIndicator, Alert, ScrollView } from "react-native";
+import { StyleSheet, View, Pressable, ActivityIndicator, Alert, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import InputForm from "../components/InputForm";
 import SubmitButton from "../components/SubmitButton";

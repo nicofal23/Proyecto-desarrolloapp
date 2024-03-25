@@ -3,7 +3,7 @@ import ShopStack from "./ShopStack";
 import CartStack from "./CartStack";
 import { colors } from "../global/Colors";
 import { StyleSheet, Text, View } from "react-native";
-import { Entypo, AntDesign, FontAwesome, EvilIcons } from "@expo/vector-icons";
+import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
 import OrdersStack from "./OrdersStack";
 import MyProfileStack from "./MyProfileStack";
 import MyProfileTabIcon from "../components/MyProfileTab";

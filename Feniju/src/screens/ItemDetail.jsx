@@ -1,4 +1,3 @@
-// ItemDetail.js
 import React, { useState , useEffect } from 'react';
 import { StyleSheet, Text, View, Pressable, Image, ActivityIndicator } from 'react-native';
 import allProducts from '../data/products.json';

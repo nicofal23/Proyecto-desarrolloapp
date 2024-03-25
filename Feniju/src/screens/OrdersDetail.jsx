@@ -9,7 +9,6 @@ const OrdersDetail = ({ route }) => {
         return <Text>No se encontró la orden.</Text>;
     }
 
-    // Encuentra la orden correspondiente
     const foundOrder = orders.find(item => item.id === selectedOrder.id);
 
     if (!foundOrder) {

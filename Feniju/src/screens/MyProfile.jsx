@@ -14,7 +14,7 @@ const MyProfile = ({ navigation }) => {
           style={styles.image}
         />
       ) : (
-        <Entypo name="user" size={100} color="black" /> // Aquí está el cambio
+        <Entypo name="user" size={100} color="black" /> 
       )}
       <Pressable
         style={styles.button}
