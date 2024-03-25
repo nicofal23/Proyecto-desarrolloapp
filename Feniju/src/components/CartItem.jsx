@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
-import { colors } from '../global/Colors';
+import { StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch } from 'react-redux'; 
 import { removeItem } from '../features/shop/cartSlice'; 
 import Toast from 'react-native-toast-message';
 import StyledText from '../styledComponents/StyledText';
+import StyledView from '../styledComponents/StyledView';
 
-const CartItem = ({ item, clearCart }) => {
+const CartItem = ({ item }) => {
   const dispatch = useDispatch(); 
 
   const handleRemoveItem = () => { 
@@ -21,39 +21,22 @@ const CartItem = ({ item, clearCart }) => {
   };
 
   return (
-    <View style={styles.card}>
-      <View style={styles.textContainer}>
+    <StyledView itemCart>
+      <StyledView>
         <StyledText>Nombre: {item.title}</StyledText>
         <StyledText>Precio: ${item.price}</StyledText>
         <StyledText>Cantidad: {item.quantity}</StyledText>
-      </View>
+      </StyledView>
       <Pressable onPress={() => {
         handleRemoveItem();
       }}>
         <Ionicons name="trash-bin-outline" size={24} color="black" />
       </Pressable>
-    </View>
+    </StyledView>
   );
 };
 
 export default CartItem;
 
 const styles = StyleSheet.create({
-  card:{
-    margin:10,
-    flex:1,
-    height:100,
-    backgroundColor: colors.header,
-    padding: 10,
-    borderWidth:2,
-    borderRadius:10,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center'
-  },
-  textContainer: {
-    width:'70%',
-    flexDirection:'column',
-    justifyContent:'flex-start',
-  },
 })

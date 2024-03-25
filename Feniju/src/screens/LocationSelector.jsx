@@ -72,7 +72,7 @@ const LocationSelector = () => {
           </Pressable>
         </View>
       ) : (
-        <StyledText erroColor>{error}</StyledText>
+        <StyledText errorColor>{error}</StyledText>
       )}
     </View>
   );

@@ -1,6 +1,7 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import React, { useState } from "react";
 import StyledText from "../styledComponents/StyledText";
+import StyledView from "../styledComponents/StyledView";
 
 const InputForm = ({ label, error, onChange, isSecure }) => {
   const [input, setInput] = useState("");
@@ -11,7 +12,7 @@ const InputForm = ({ label, error, onChange, isSecure }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <StyledView marginBottom>
       <StyledText label>{label}</StyledText>
       <TextInput
         style={[styles.input, error && styles.inputError]} 
@@ -20,7 +21,7 @@ const InputForm = ({ label, error, onChange, isSecure }) => {
         secureTextEntry={isSecure}
       />
       {error ? <StyledText errorColor >{error}</StyledText> : null} 
-    </View>
+    </StyledView>
   );
 };
 
@@ -28,20 +29,12 @@ export default InputForm;
 
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 20,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 5,
-  },
+ 
   input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
+    borderWidth: 3,
+    borderColor: 'grey',
     borderRadius: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    fontSize: 16,
+    padding: 10,
   },
   inputError: {
     borderColor: 'red', 

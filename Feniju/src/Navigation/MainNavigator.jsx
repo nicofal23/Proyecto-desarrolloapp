@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
-import React, { useEffect, useState } from "react";
+import { StyleSheet, ActivityIndicator } from "react-native";
+import React, { useEffect } from "react";
 import TabNavigator from "./TabNavigator";
 import AuthStack from "./AuthStack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,6 +8,7 @@ import { useGetProfileImageQuery, useGetUserLocationQuery } from "../services/sh
 import { setProfileImage, setUserLocation,setUser } from "../features/auth/authSlice";
 import { fetchSession } from "../db";
 import StyledText from "../styledComponents/StyledText";
+import StyledView from "../styledComponents/StyledView";
 
 const MainNavigator = () => {
   const {user, localId} = useSelector(state => state.authReducer.value)
@@ -42,17 +43,17 @@ const MainNavigator = () => {
 
   if (isLoading) {
     return (
-      <View style={styles.container}>
+      <StyledView card>
         <ActivityIndicator size="large" color="#0000ff" />
-      </View>
+      </StyledView>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.container}>
+      <StyledView card>
         <StyledText errorColor>Error al cargar</StyledText>
-      </View>
+      </StyledView>
     );
   }
 
@@ -64,10 +65,5 @@ const MainNavigator = () => {
 export default MainNavigator;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 });
 

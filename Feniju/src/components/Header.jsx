@@ -1,4 +1,4 @@
-import { View,  StyleSheet, Image, Text, Pressable} from "react-native";
+import { View,  StyleSheet, Image, Pressable} from "react-native";
 import { colors } from '../global/Colors'
 import { LogoImage } from "./Logo";
 import { fonts } from '../global/fonts'
@@ -40,22 +40,6 @@ function Header({ title, isLoginPage }) {
 export default Header;
 
 const styles =StyleSheet.create({
-    container: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems:'center',
-        width: '100%',
-        height: 70,
-        padding:8,
-      },
-    titulo:{
-        textAlign: "center",
-        color: "black",
-        fontSize: 20,
-        fontFamily:'FontWeb',
-        marginTop:20,
-        marginBottom:20
-    },
     tituloconteiner: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -71,10 +55,6 @@ const styles =StyleSheet.create({
         marginTop:15,
         width:160,
         height:50,
-    },
-    carro:{
-        width:40,
-        height:40,
     },
     menu: {
         alignItems:'center',

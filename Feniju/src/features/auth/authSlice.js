@@ -1,4 +1,3 @@
-// Configuración de Redux (authSlice.js)
 import { createSlice } from "@reduxjs/toolkit";
 
 export const authSlice = createSlice({

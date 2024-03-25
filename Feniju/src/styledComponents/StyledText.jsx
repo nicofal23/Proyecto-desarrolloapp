@@ -36,9 +36,15 @@ const styles = StyleSheet.create({
     white:{
         color: colors.font,
     },
+    button: {
+        backgroundColor: "blue",
+        borderRadius: 6,
+        padding: 8,
+        color: colors.font
+      },
 })
 
-export default function StyledText({children, link, title, text, errorColor,textCategori, font,label,focus,white, ...props}) {
+export default function StyledText({children, link, title, text, errorColor,textCategori, font,label,focus,white, button,...props}) {
     const textStyles = [
         styles.general,
         link && styles.link,
@@ -49,6 +55,7 @@ export default function StyledText({children, link, title, text, errorColor,text
         font && styles.font,
         label && styles.label,
         white && styles.white,
+        button && styles.button,
     ];
     return <Text style={[textStyles, { ...props }]}>{children}</Text>
 }

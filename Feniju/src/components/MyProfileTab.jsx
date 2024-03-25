@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { Image } from "react-native";
 import { useSelector } from "react-redux";
 import { EvilIcons } from "@expo/vector-icons";
+import StyledView from "../styledComponents/StyledView";
 
 const MyProfileTabIcon = ({ focused }) => {
   const { user, profileImage } = useSelector((state) => state.authReducer.value);
 
   return (
-    <View style={styles.tabContainer}>
+    <StyledView>
       {profileImage ? (
         <Image 
           source={{ uri: profileImage }} 
@@ -20,16 +21,13 @@ const MyProfileTabIcon = ({ focused }) => {
           color={focused ? "black" : "white"}
         />
       )}
-    </View>
+    </StyledView>
   );
 };
 
 export default MyProfileTabIcon;
 
 const styles = {
-  tabContainer: {
-    alignItems: "center",
-  },
   profileImage: {
     width: 30,
     height: 30,

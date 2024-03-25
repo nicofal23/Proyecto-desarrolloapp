@@ -6,6 +6,7 @@ import { colors } from '../global/Colors';
 import { useGetOrdersQuery } from '../services/shopService';
 import { useSelector } from 'react-redux';
 import StyledText from '../styledComponents/StyledText';
+import StyledView from '../styledComponents/StyledView';
 
 const OrderItem = () => {
     const user = useSelector((state) => state.authReducer.value.user); 
@@ -63,39 +64,21 @@ const OrderItem = () => {
             data={formattedOrders}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
-                <View style={styles.card}>
-                    <View style={styles.textContainer}>
+                <StyledView itemCart>
+                    <StyledView>
                         <StyledText text>{item.formattedDate}</StyledText>
                         <StyledText font text>${item.total}</StyledText>
-                    </View>
+                    </StyledView>
                     <Pressable onPress={() => handleOrderDetail(item)}>
                         <Octicons name="info" size={24} color="black" />
                     </Pressable>
-                </View>
+                </StyledView>
             )}
         />
     );
 };
 
 const styles = StyleSheet.create({
-    card: {
-        flex: 1,
-        height: 100,
-        backgroundColor: colors.header,
-        padding: 10,
-        margin: 10,
-        borderWidth: 2,
-        borderRadius: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    textContainer: {
-        width: '70%',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-    },
     noProductsContainer: {
         flex: 1,
         justifyContent: 'center',

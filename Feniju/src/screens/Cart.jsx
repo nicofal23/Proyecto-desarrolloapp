@@ -72,7 +72,7 @@ const Cart = () => {
             </View>
             <View>
               <Pressable onPress={confirmCart} disabled={isOrdering}>
-                <StyledText>Enviar Orden</StyledText>
+                <StyledText button>Enviar Orden</StyledText>
               </Pressable>
             </View>
           </View>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ImageBackground, FlatList, ActivityIndicator, Text } from 'react-native';
+import {StyleSheet, ImageBackground, FlatList, ActivityIndicator } from 'react-native';
 import getImageSource from './FuenteImage';
 import CategoryItem from './CategoryItem';
 import { useGetCategoriesQuery } from '../services/shopService';
 import StyledText from '../styledComponents/StyledText';
+import StyledView from '../styledComponents/StyledView';
 
 function Categories({ navigation }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,23 +20,23 @@ function Categories({ navigation }) {
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
+      <StyledView loadingContainer>
         <ActivityIndicator size="larges" color="#0000ff"/>
-        <StyledText>Cargandon...</StyledText>
-      </View>
+        <StyledText title>Cargandon...</StyledText>
+      </StyledView>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.errorContainer}>
+      <StyledView loadingContainer card>
         <StyledText errorColor>Error: {error.message}</StyledText>
-      </View>
+      </StyledView>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <StyledView>
       <FlatList
         data={data}
         renderItem={({ item }) => (
@@ -45,32 +46,15 @@ function Categories({ navigation }) {
         )}
         keyExtractor={(category) => category}
       />
-    </View>
+    </StyledView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    marginTop: 30,
-    padding: 10,
-    alignContent: 'center',
-    marginRight: 10,
-    width: 400,
-  },
   textBackground: {
     margin: 10,
     borderRadius: 5,
     overflow: 'hidden',
-  },
-  loadingContainer: {
-    marginTop: 200,
-    justifyContent: 'center',
-    alignItems: 'center', 
-  },
-  errorContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

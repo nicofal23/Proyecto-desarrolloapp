@@ -1,14 +1,15 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet} from "react-native";
 import React from "react";
 import StyledText from "../styledComponents/StyledText";
+import StyledView from "../styledComponents/StyledView";
 
 const SubmitButton = ({ onPress, title }) => {
   return (
-    <View style={styles.container}>
+    <StyledView card>
       <Pressable onPress={onPress} style={styles.button}>
         <StyledText font white>{title}</StyledText>
       </Pressable>
-    </View>
+    </StyledView>
   );
 };
 

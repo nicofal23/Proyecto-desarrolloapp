@@ -1,5 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet} from "react-native";
 import { googleAPI } from "../firebase/googleAPI";
+import StyledView from "../styledComponents/StyledView";
 
 const MapPreview = ({ location}) => {
   const mapPreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=13&size=600x300&maptype=roadmap
@@ -7,19 +8,15 @@ const MapPreview = ({ location}) => {
     &key=${googleAPI.mapStatic}`;
 
   return (
-    <View style={styles.mapPreview}>
+    <StyledView card>
       <Image style={styles.mapImage} source={{ uri: mapPreviewUrl }} />
-    </View>
+    </StyledView>
   );
 };
 
 export default MapPreview;
 
 const styles = StyleSheet.create({
-  mapPreview: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
   mapImage: {
     width: 300,
     height: 300,

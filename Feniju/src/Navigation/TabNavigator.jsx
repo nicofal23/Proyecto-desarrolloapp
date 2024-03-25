@@ -7,6 +7,7 @@ import { Entypo, AntDesign, FontAwesome, EvilIcons } from "@expo/vector-icons";
 import OrdersStack from "./OrdersStack";
 import MyProfileStack from "./MyProfileStack";
 import MyProfileTabIcon from "../components/MyProfileTab";
+import StyledView from "../styledComponents/StyledView";
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -74,10 +75,10 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => {
             return (
-              <View style={styles.tabContainer}>
+              <StyledView card>
                 <MyProfileTabIcon/>
                 <Text style={{ color: focused ? "black" : "white" }}>Mi Perfil</Text>
-              </View>
+              </StyledView>
             );
           },
         }}
@@ -90,13 +91,9 @@ const TabNavigator = () => {
 export default TabNavigator;
 
 const styles = StyleSheet.create ({
-    tabBar: {
-        backgroundColor : colors.header,
-        shadowColor: 'white',
-        height:70
-    },
-    tabContainer: {
-        justifyContent:'center',
-        alignItems:'center'
-    }
+  tabBar: {
+    backgroundColor : colors.header,
+    shadowColor: 'white',
+    height:70
+},
 })

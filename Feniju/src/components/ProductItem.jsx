@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { View, Image, Pressable, StyleSheet, Text, useWindowDimensions } from "react-native";
+import { Image, Pressable, StyleSheet, useWindowDimensions } from "react-native";
 import Card from "./Card";
 import StyledText from "../styledComponents/StyledText";
+import StyledView from "../styledComponents/StyledView";
 
 const ProductItem = ({ product, navigation }) => {
   const [isPortrait, setIsPortrait] = useState(true);
@@ -21,29 +22,23 @@ const ProductItem = ({ product, navigation }) => {
   }, [width, height]);
 
   return (
-    <View style={styles.contenedor}>
+    <StyledView card>
       <Pressable onPress={() => navigation.navigate("ItemDetail", {id: product.id})}>
         <Card style={styles.card}>
-          <View>
+          <StyledView>
             <StyledText>{product.title}</StyledText>
             <StyledText font text>${product.price}</StyledText>
-          </View>
+          </StyledView>
           <Image style={styles.image} source={{ uri: product.images[0] }} />
         </Card>
       </Pressable>
-    </View> 
+    </StyledView> 
   );
 };
 
 export default ProductItem;
 
 const styles = StyleSheet.create({
-  contenedor:{
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-   
-  },
   card: {
     marginVertical: 20,
     flexDirection: "row",
